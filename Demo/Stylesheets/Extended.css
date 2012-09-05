@@ -1,0 +1,15 @@
+/*
+ * MainWindow
+ */
+#frameWidgets
+{
+    background-color: rgba(74, 74, 74, 255);
+    border-bottom-right-radius: 0px;
+    border-top-right-radius: 0px;
+    border-width: 1px;
+}
+
+#labelPicture
+{
+    background-color: rgba(74, 74, 74, 255);
+}
