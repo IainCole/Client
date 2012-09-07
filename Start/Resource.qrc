@@ -1,8 +1,0 @@
-<RCC>
-    <qresource prefix="/Forms">
-        <file>StartWidget.ui</file>
-    </qresource>
-    <qresource prefix="/Graphics">
-        <file>Images/Picture.png</file>
-    </qresource>
-</RCC>
