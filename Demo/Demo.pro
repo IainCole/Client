@@ -16,6 +16,8 @@ HEADERS += \
     AboutDialog.h \
     SqueezeWidget.h \
     RecorderWidget.h \
+    Global.h \
+    Connection.h \
     BigFourWidget.h
 
 SOURCES += \
@@ -24,7 +26,8 @@ SOURCES += \
     AboutDialog.cpp \
     SqueezeWidget.cpp \
     RecorderWidget.cpp \
-    BigFourWidget.cpp
+    BigFourWidget.cpp \
+    Connection.cpp
 
 FORMS += \
     MainWindow.ui \
@@ -65,7 +68,16 @@ OTHER_FILES += \
     Images/ArrowRightDisabled.png \
     Images/ArrowRight.png \
     Stylesheets/Unix.css \
-    Images/Picture.png
+    Images/Picture.png \
+    Images/Stop.png \
+    Images/Play.png \
+    Images/Pause.png \
+    Images/FastRewindStart.png \
+    Images/FastRewind.png \
+    Images/FastForwardEnd.png \
+    Images/FastForward.png \
+    Images/Recording.png \
+    Images/Record.png
 
 DEPENDPATH += $$PWD/../Caspar
 INCLUDEPATH += $$PWD/../Caspar

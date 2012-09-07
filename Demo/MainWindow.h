@@ -21,8 +21,6 @@ class MainWindow : public QMainWindow, Ui::MainWindow
         bool eventFilter(QObject* target, QEvent* event);
 
     private:
-        CasparDevice* device;
-
         void setupUiMenu();
         void removeWidgets();
         void enableDemoButton(const QString& buttonName);

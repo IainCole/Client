@@ -118,27 +118,27 @@ void CasparDevice::stopTemplate(int channel, int layer, int flashlayer)
                              .arg(flashlayer));
 }
 
-void CasparDevice::clearVideo(int channel)
+void CasparDevice::clearMedia(int channel)
 {
     AMCPDevice::writeMessage(QString("CLEAR %1")
                              .arg(channel));
 }
 
-void CasparDevice::clearVideo(int channel, int layer)
+void CasparDevice::clearMedia(int channel, int layer)
 {
     AMCPDevice::writeMessage(QString("CLEAR %1-%2")
                              .arg(channel)
                              .arg(layer));
 }
 
-void CasparDevice::playVideo(int channel, const QString& item)
+void CasparDevice::playMedia(int channel, const QString& item)
 {
     AMCPDevice::writeMessage(QString("PLAY %1 %2")
                              .arg(channel)
                              .arg(item));
 }
 
-void CasparDevice::playVideo(int channel, int layer, const QString& item)
+void CasparDevice::playMedia(int channel, int layer, const QString& item)
 {
     AMCPDevice::writeMessage(QString("PLAY %1-%2 %3")
                              .arg(channel)
@@ -146,13 +146,58 @@ void CasparDevice::playVideo(int channel, int layer, const QString& item)
                              .arg(item));
 }
 
-void CasparDevice::stopVideo(int channel)
+void CasparDevice::stopMedia(int channel)
 {
     AMCPDevice::writeMessage(QString("STOP %1")
                              .arg(channel));
 }
 
-void CasparDevice::stopVideo(int channel, int layer)
+void CasparDevice::startRecording(int channel, const QString& filename)
+{
+    AMCPDevice::writeMessage(QString("ADD %1 FILE %2")
+                             .arg(channel)
+                             .arg(filename));
+}
+
+void CasparDevice::startRecording(int channel, const QString& filename, const QString& params)
+{
+    AMCPDevice::writeMessage(QString("ADD %1 FILE %2 %3")
+                             .arg(channel)
+                             .arg(filename)
+                             .arg(params));
+}
+
+void CasparDevice::startRecording(int channel, int layer, const QString& filename)
+{
+    AMCPDevice::writeMessage(QString("ADD %1-%2 FILE %3")
+                             .arg(channel)
+                             .arg(layer)
+                             .arg(filename));
+}
+
+void CasparDevice::startRecording(int channel, int layer, const QString& filename, const QString& params)
+{
+    AMCPDevice::writeMessage(QString("ADD %1-%2 FILE %3 %4")
+                             .arg(channel)
+                             .arg(layer)
+                             .arg(filename)
+                             .arg(params));
+}
+
+void CasparDevice::stopRecording(int channel)
+{
+    AMCPDevice::writeMessage(QString("REMOVE %1 FILE")
+                             .arg(channel));
+}
+
+void CasparDevice::stopRecording(int channel, int layer)
+{
+    AMCPDevice::writeMessage(QString("REMOVE %1-%2 FILE")
+                             .arg(channel)
+                             .arg(layer));
+}
+
+void CasparDevice::stopMedia(int channel, int layer)
 {
     AMCPDevice::writeMessage(QString("STOP %1-%2")
                              .arg(channel)

@@ -36,9 +36,10 @@
         <file>Images/FastRewindStart.png</file>
         <file>Images/Pause.png</file>
         <file>Images/Play.png</file>
-        <file>Images/Record.png</file>
         <file>Images/Stop.png</file>
         <file>Images/Picture.png</file>
+        <file>Images/Record.png</file>
+        <file>Images/Recording.png</file>
     </qresource>
     <qresource prefix="/Appearances">
         <file>Stylesheets/Default.css</file>

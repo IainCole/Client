@@ -42,14 +42,22 @@ class CASPAR_EXPORT CasparDevice : public AMCPDevice
         void stopTemplate(int channel, int flashlayer);
         void stopTemplate(int channel, int layer, int flashlayer);
 
-        void clearVideo(int channel);
-        void clearVideo(int channel, int layer);
+        void clearMedia(int channel);
+        void clearMedia(int channel, int layer);
 
-        void playVideo(int channel, const QString& item);
-        void playVideo(int channel, int layer, const QString& item);
+        void playMedia(int channel, const QString& item);
+        void playMedia(int channel, int layer, const QString& item);
 
-        void stopVideo(int channel);
-        void stopVideo(int channel, int layer);
+        void stopMedia(int channel);
+        void stopMedia(int channel, int layer);
+
+        void startRecording(int channel, const QString& filename);
+        void startRecording(int channel, const QString& filename, const QString& params);
+        void startRecording(int channel, int layer, const QString& filename);
+        void startRecording(int channel, int layer, const QString& filename, const QString& params);
+
+        void stopRecording(int channel);
+        void stopRecording(int channel, int layer);
 
         void setVolume(int channel, float volume);
         void setVolume(int channel, float volume, int duration, QString easing);

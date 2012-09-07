@@ -1,4 +1,6 @@
 #include "MainWindow.h"
+#include "Global.h"
+#include "Connection.h"
 #include "AboutDialog.h"
 #include "Enum.h"
 #include "StatusbarEvent.h"
@@ -20,6 +22,7 @@ MainWindow::MainWindow(QWidget* parent) : QMainWindow(parent)
     setupUi(this);
     setupUiMenu();
     setWindowIcon(QIcon(":/Graphics/Images/CasparCG.ico"));
+    setWindowTitle(QString("%1 %2.%3").arg(this->windowTitle()).arg(MAJOR_VERSION).arg(MINOR_VERSION));
 
     qApp->installEventFilter(this);
 }
@@ -75,20 +78,18 @@ void MainWindow::showAboutDialog()
 
 void MainWindow::connectDevice()
 {
-    this->device = new CasparDevice(this);
-
-    QObject::connect(this->device, SIGNAL(connectionStateChanged(CasparDevice&)), this, SLOT(deviceConnectionStateChanged(CasparDevice&)));
-    QObject::connect(this->device, SIGNAL(versionChanged(const CasparVersion&, CasparDevice&)), this, SLOT(deviceVersionChanged(const CasparVersion&, CasparDevice&)));
+    QObject::connect(&Connection::getInstance().getDevice(), SIGNAL(connectionStateChanged(CasparDevice&)), this, SLOT(deviceConnectionStateChanged(CasparDevice&)));
+    QObject::connect(&Connection::getInstance().getDevice(), SIGNAL(versionChanged(const CasparVersion&, CasparDevice&)), this, SLOT(deviceVersionChanged(const CasparVersion&, CasparDevice&)));
 
     if (this->lineEditPort->text().isEmpty())
-        this->device->connect(this->lineEditName->text());
+        Connection::getInstance().connect(this->lineEditName->text());
     else
-        this->device->connect(this->lineEditName->text(), this->lineEditPort->text().toInt());
+        Connection::getInstance().connect(this->lineEditName->text(), this->lineEditPort->text().toInt());
 }
 
 void MainWindow::disconnectDevice()
 {
-    this->device->disconnect();
+    Connection::getInstance().disconnect();
 }
 
 void MainWindow::deviceConnectionStateChanged(CasparDevice& device)
@@ -110,7 +111,8 @@ void MainWindow::deviceConnectionStateChanged(CasparDevice& device)
     {
         removeWidgets();
 
-        this->labelVersion->clear();
+        statusBar()->clearMessage();
+
         this->pushButtonConnect->setEnabled(true);
         this->pushButtonDisconnect->setEnabled(false);
         this->pushButtonRecorder->setEnabled(false);
@@ -124,7 +126,7 @@ void MainWindow::deviceConnectionStateChanged(CasparDevice& device)
 
 void MainWindow::deviceVersionChanged(const CasparVersion& version, CasparDevice& device)
 {
-    this->labelVersion->setText(version.getVersion());
+    statusBar()->showMessage(QString("Connected to %1 running version %2").arg(device.getName()).arg(version.getVersion()));
 }
 
 void MainWindow::showRecorder()

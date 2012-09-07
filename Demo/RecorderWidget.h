@@ -2,6 +2,8 @@
 
 #include "ui_RecorderWidget.h"
 
+#include <QtCore/QTime>
+#include <QtCore/QTimer>
 #include <QtGui/QWidget>
 
 class RecorderWidget : public QWidget, Ui::RecorderWidget
@@ -15,6 +17,10 @@ class RecorderWidget : public QWidget, Ui::RecorderWidget
         bool eventFilter(QObject* target, QEvent* event);
 
     private:
-        Q_SLOT void updateTime();
+        QTime time;
+        QTimer* timer;
+        bool isRecording;
+
+        Q_SLOT void updateTimer();
         Q_SLOT void buttonPressed();
 };

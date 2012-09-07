@@ -299,6 +299,41 @@
        <property name="focusPolicy">
         <enum>Qt::ClickFocus</enum>
        </property>
+       <property name="placeholderText">
+        <string>output.mov</string>
+       </property>
+      </widget>
+     </item>
+     <item>
+      <widget class="QLabel" name="labelCodec">
+       <property name="text">
+        <string>Codec:</string>
+       </property>
+      </widget>
+     </item>
+     <item>
+      <widget class="QComboBox" name="comboBoxCodec">
+       <property name="minimumSize">
+        <size>
+         <width>75</width>
+         <height>0</height>
+        </size>
+       </property>
+       <item>
+        <property name="text">
+         <string>H.264</string>
+        </property>
+       </item>
+       <item>
+        <property name="text">
+         <string>DNxHD</string>
+        </property>
+       </item>
+       <item>
+        <property name="text">
+         <string>ProRes</string>
+        </property>
+       </item>
       </widget>
      </item>
      <item>
