@@ -1,0 +1,15 @@
+<RCC>
+    <qresource prefix="/Forms">
+        <file>RecorderWidget.ui</file>
+    </qresource>
+    <qresource prefix="/Graphics">
+        <file>Images/FastRewind.png</file>
+        <file>Images/FastForward.png</file>
+        <file>Images/Play.png</file>
+        <file>Images/FastRewindStart.png</file>
+        <file>Images/FastForwardEnd.png</file>
+        <file>Images/Record.png</file>
+        <file>Images/Stop.png</file>
+        <file>Images/Pause.png</file>
+    </qresource>
+</RCC>

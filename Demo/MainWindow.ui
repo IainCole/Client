@@ -105,6 +105,19 @@
          </widget>
         </item>
         <item>
+         <widget class="QPushButton" name="pushButtonRecorder">
+          <property name="enabled">
+           <bool>false</bool>
+          </property>
+          <property name="focusPolicy">
+           <enum>Qt::NoFocus</enum>
+          </property>
+          <property name="text">
+           <string>Recorder</string>
+          </property>
+         </widget>
+        </item>
+        <item>
          <widget class="QPushButton" name="pushButtonBigFour">
           <property name="enabled">
            <bool>false</bool>
@@ -223,7 +236,7 @@
    <hints>
     <hint type="sourcelabel">
      <x>114</x>
-     <y>99</y>
+     <y>177</y>
     </hint>
     <hint type="destinationlabel">
      <x>7</x>
@@ -239,7 +252,7 @@
    <hints>
     <hint type="sourcelabel">
      <x>37</x>
-     <y>55</y>
+     <y>133</y>
     </hint>
     <hint type="destinationlabel">
      <x>-4</x>
@@ -255,7 +268,7 @@
    <hints>
     <hint type="sourcelabel">
      <x>62</x>
-     <y>585</y>
+     <y>53</y>
     </hint>
     <hint type="destinationlabel">
      <x>58</x>
@@ -271,11 +284,27 @@
    <hints>
     <hint type="sourcelabel">
      <x>154</x>
-     <y>599</y>
+     <y>67</y>
     </hint>
     <hint type="destinationlabel">
      <x>155</x>
      <y>651</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>pushButtonRecorder</sender>
+   <signal>clicked()</signal>
+   <receiver>MainWindow</receiver>
+   <slot>showRecorder()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>44</x>
+     <y>110</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>-8</x>
+     <y>132</y>
     </hint>
    </hints>
   </connection>
@@ -286,5 +315,6 @@
   <slot>showBigFour()</slot>
   <slot>connectDevice()</slot>
   <slot>disconnectDevice()</slot>
+  <slot>showRecorder()</slot>
  </slots>
 </ui>

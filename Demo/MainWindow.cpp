@@ -2,6 +2,7 @@
 #include "AboutDialog.h"
 #include "Enum.h"
 #include "StatusbarEvent.h"
+#include "RecorderWidget.h"
 #include "BigFourWidget.h"
 #include "SqueezeWidget.h"
 
@@ -96,6 +97,7 @@ void MainWindow::deviceConnectionStateChanged(CasparDevice& device)
     {
         this->pushButtonConnect->setEnabled(false);
         this->pushButtonDisconnect->setEnabled(true);
+        this->pushButtonRecorder->setEnabled(true);
         this->pushButtonBigFour->setEnabled(true);
         this->pushButtonSqueeze->setEnabled(true);
         this->pushButtonMixer->setEnabled(true);
@@ -111,6 +113,7 @@ void MainWindow::deviceConnectionStateChanged(CasparDevice& device)
         this->labelVersion->clear();
         this->pushButtonConnect->setEnabled(true);
         this->pushButtonDisconnect->setEnabled(false);
+        this->pushButtonRecorder->setEnabled(false);
         this->pushButtonBigFour->setEnabled(false);
         this->pushButtonSqueeze->setEnabled(false);
         this->pushButtonMixer->setEnabled(false);
@@ -122,6 +125,12 @@ void MainWindow::deviceConnectionStateChanged(CasparDevice& device)
 void MainWindow::deviceVersionChanged(const CasparVersion& version, CasparDevice& device)
 {
     this->labelVersion->setText(version.getVersion());
+}
+
+void MainWindow::showRecorder()
+{
+    enableDemoButton("pushButtonRecorder");
+    this->frameWidgets->layout()->addWidget(new RecorderWidget(this));
 }
 
 void MainWindow::showBigFour()

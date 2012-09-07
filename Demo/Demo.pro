@@ -69,6 +69,13 @@ win32:CONFIG(release, debug|release): LIBS += -L$$OUT_PWD/../Common/release/ -lC
 else:win32:CONFIG(debug, debug|release): LIBS += -L$$OUT_PWD/../Common/debug/ -lCommon
 else:unix: LIBS += -L$$OUT_PWD/../Common/ -lCommon
 
+DEPENDPATH += $$PWD/../Recorder
+INCLUDEPATH += $$PWD/../Recorder
+INCLUDEPATH += $$PWD/../../build/Recorder
+win32:CONFIG(release, debug|release): LIBS += -L$$OUT_PWD/../Recorder/release/ -lRecorder
+else:win32:CONFIG(debug, debug|release): LIBS += -L$$OUT_PWD/../Recorder/debug/ -lRecorder
+else:unix: LIBS += -L$$OUT_PWD/../Recorder/ -lRecorder
+
 DEPENDPATH += $$PWD/../BigFour
 INCLUDEPATH += $$PWD/../BigFour
 INCLUDEPATH += $$PWD/../../build/BigFour

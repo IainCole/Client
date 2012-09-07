@@ -5,4 +5,5 @@ SUBDIRS += \
     Common \
     Caspar \
     Squeeze \
+    Recorder \
     Demo

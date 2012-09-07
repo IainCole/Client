@@ -6,26 +6,33 @@
 
 QT += core gui
 
-TARGET = Squeeze
+TARGET = Recorder
 TEMPLATE = lib
 
-DEFINES += SQUEEZE_LIBRARY
+DEFINES += RECORDER_LIBRARY
 
 HEADERS += \
-    SqueezeWidget.h \
-    Global.h
+    Global.h \
+    RecorderWidget.h
 
 SOURCES += \
-    SqueezeWidget.cpp
+    RecorderWidget.cpp
 
 FORMS += \
-    SqueezeWidget.ui
+    RecorderWidget.ui
 
 RESOURCES += \
     Resource.qrc
 
 OTHER_FILES += \
-    Images/Picture.png
+    Images/FastForwardEnd.png \
+    Images/FastRewindStart.png \
+    Images/Play.png \
+    Images/FastForward.png \
+    Images/FastRewind.png \
+    Images/Record.png \
+    Images/Stop.png \
+    Images/Pause.png
 
 DEPENDPATH += $$PWD/../Caspar
 INCLUDEPATH += $$PWD/../Caspar

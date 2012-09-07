@@ -28,6 +28,7 @@ class MainWindow : public QMainWindow, Ui::MainWindow
         void enableDemoButton(const QString& buttonName);
 
         Q_SLOT void showAboutDialog();
+        Q_SLOT void showRecorder();
         Q_SLOT void showBigFour();
         Q_SLOT void showSqueeze();
         Q_SLOT void connectDevice();
