@@ -39,6 +39,9 @@
        <layout class="QVBoxLayout" name="verticalLayout_2">
         <item>
          <widget class="QPushButton" name="pushButtonHome">
+          <property name="focusPolicy">
+           <enum>Qt::NoFocus</enum>
+          </property>
           <property name="text">
            <string>Home</string>
           </property>
@@ -46,20 +49,19 @@
         </item>
         <item>
          <widget class="QPushButton" name="pushButtonSqueeze">
+          <property name="focusPolicy">
+           <enum>Qt::NoFocus</enum>
+          </property>
           <property name="text">
            <string>Squeeze</string>
           </property>
          </widget>
         </item>
         <item>
-         <widget class="QPushButton" name="pushButtonWorldCup">
-          <property name="text">
-           <string>FIFA World Cup</string>
-          </property>
-         </widget>
-        </item>
-        <item>
          <widget class="QPushButton" name="pushButtonBigFour">
+          <property name="focusPolicy">
+           <enum>Qt::NoFocus</enum>
+          </property>
           <property name="text">
            <string>The Big Four</string>
           </property>
@@ -67,6 +69,9 @@
         </item>
         <item>
          <widget class="QPushButton" name="pushButtonMixer">
+          <property name="focusPolicy">
+           <enum>Qt::NoFocus</enum>
+          </property>
           <property name="text">
            <string>Mixer</string>
           </property>
@@ -74,6 +79,9 @@
         </item>
         <item>
          <widget class="QPushButton" name="pushButtonDynamicGraphics">
+          <property name="focusPolicy">
+           <enum>Qt::NoFocus</enum>
+          </property>
           <property name="text">
            <string>Dynamic Graphics</string>
           </property>
@@ -81,6 +89,9 @@
         </item>
         <item>
          <widget class="QPushButton" name="pushButtonDigitalVideoEffects">
+          <property name="focusPolicy">
+           <enum>Qt::NoFocus</enum>
+          </property>
           <property name="text">
            <string>Digital Video Effects</string>
           </property>

@@ -14,9 +14,17 @@ DEFINES += CASPAR_LIBRARY
 
 SOURCES += \
     CasparDevice.cpp \
-    AMCPDevice.cpp
+    AMCPDevice.cpp \
+    CasparVersion.cpp \
+    CasparTemplate.cpp \
+    CasparMedia.cpp \
+    CasparData.cpp
 
 HEADERS += \
     Global.h \
     CasparDevice.h \
-    AMCPDevice.h
+    AMCPDevice.h \
+    CasparVersion.h \
+    CasparTemplate.h \
+    CasparMedia.h \
+    CasparData.h

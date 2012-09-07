@@ -7,22 +7,21 @@
 #include <QtCore/QString>
 #include <QtNetwork/QTcpSocket>
 
-class AMCPDevice : public QObject
+class CASPAR_EXPORT AMCPDevice : public QObject
 {
     Q_OBJECT
 
     public:
-        bool isConnected() const;
-
-        virtual void sendDeviceNotification() = 0;
-
-    protected:
         explicit AMCPDevice(QObject* parent = 0);
         ~AMCPDevice();
 
+        bool isConnected() const;
+
+    protected:
         enum AMCPCommand
         {
             NONE,
+            CONNECTIONSTATE,
             LOAD,
             LOADBG,
             PLAY,
@@ -34,7 +33,15 @@ class AMCPDevice : public QObject
             TLS,
             INFO,
             INFOSYSTEM,
-            DATA
+            DATA,
+            CLEAR,
+            SET,
+            MIXER,
+            CALL,
+            REMOVE,
+            ADD,
+            SWAP,
+            STATUS
         };
 
         QTcpSocket* socket;
@@ -42,9 +49,13 @@ class AMCPDevice : public QObject
 
         QList<QString> response;
 
+        virtual void sendNotification() = 0;
+
+        void connectDevice(const QString& ip, int port);
+        void disconnectDevice();
+
         void resetDevice();
         void writeMessage(const QString& message);
-        void connectDevice(const QString& hostname, int port);
 
     private:
         enum AMCPParserState
@@ -56,7 +67,7 @@ class AMCPDevice : public QObject
 
         bool connected;
         int code, state;
-        QString previousLine;
+        QString line, previousLine;
 
         void parseLine(const QString& line);
         void parseHeader(const QString& line);

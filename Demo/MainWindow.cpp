@@ -20,7 +20,7 @@ MainWindow::MainWindow(QWidget* parent) : QMainWindow(parent)
     setupUiMenu();
     setWindowIcon(QIcon(":/Graphics/Images/CasparCG.ico"));
 
-    setGeometry(QStyle::alignedRect(Qt::LeftToRight, Qt::AlignCenter, size(), qApp->desktop()->availableGeometry()));
+    //setGeometry(QStyle::alignedRect(Qt::LeftToRight, Qt::AlignCenter, size(), qApp->desktop()->availableGeometry()));
 
     showStart();
 
@@ -56,11 +56,6 @@ bool MainWindow::eventFilter(QObject* target, QEvent* event)
     return QObject::eventFilter(target, event);
 }
 
-void MainWindow::closeWindow()
-{
-    close();
-}
-
 void MainWindow::enableDemoButton(const QString& buttonName)
 {
     foreach(QPushButton* button, this->findChildren<QPushButton*>())
@@ -88,14 +83,4 @@ void MainWindow::showSqueeze()
 {
     enableDemoButton("pushButtonSqueeze");
     this->frameWidgets->layout()->addWidget(new SqueezeWidget(this));
-}
-
-void MainWindow::toggleMaximize()
-{
-    isMaximized() ? showNormal() : showMaximized();
-}
-
-void MainWindow::toggleFullscreen()
-{
-    isFullScreen() ? showNormal() : showFullScreen();
 }
