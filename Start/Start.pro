@@ -16,7 +16,7 @@ HEADERS += \
     Global.h
 
 SOURCES += \
-    StartWidget2.cpp
+    StartWidget.cpp
 
 FORMS += \
     StartWidget.ui
