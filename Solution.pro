@@ -1,8 +1,8 @@
 TEMPLATE = subdirs
 
 SUBDIRS += \
+    BigFour \
     Common \
     Caspar \
     Squeeze \
-    Start \
     Demo

@@ -82,10 +82,20 @@
           <string/>
          </property>
          <property name="pixmap">
-          <pixmap resource="../Squeeze/Resource.qrc">:/Graphics/Images/Picture.png</pixmap>
+          <pixmap resource="../BigFour/Resource.qrc">:/Graphics/Images/Picture.png</pixmap>
          </property>
          <property name="scaledContents">
           <bool>true</bool>
+         </property>
+         <property name="alignment">
+          <set>Qt::AlignCenter</set>
+         </property>
+        </widget>
+       </item>
+       <item>
+        <widget class="QLabel" name="labelStatus">
+         <property name="text">
+          <string/>
          </property>
          <property name="alignment">
           <set>Qt::AlignCenter</set>
@@ -109,10 +119,11 @@
   </action>
  </widget>
  <resources>
-  <include location="../Squeeze/Resource.qrc"/>
+  <include location="../BigFour/Resource.qrc"/>
  </resources>
  <connections/>
  <slots>
-  <slot>startDemo()</slot>
+  <slot>connectDevice()</slot>
+  <slot>disconnectDevice()</slot>
  </slots>
 </ui>

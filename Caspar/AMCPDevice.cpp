@@ -7,6 +7,7 @@
 
 AMCPDevice::AMCPDevice(QObject* parent) : QObject(parent)
 {
+    this->connected = false;
     this->command = AMCPDevice::NONE;
     this->state = AMCPDevice::ExpectingHeader;
 

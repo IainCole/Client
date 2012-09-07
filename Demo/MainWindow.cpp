@@ -2,8 +2,8 @@
 #include "AboutDialog.h"
 #include "Enum.h"
 #include "StatusbarEvent.h"
+#include "BigFourWidget.h"
 #include "SqueezeWidget.h"
-#include "StartWidget.h"
 
 #include <QtCore/QDebug>
 #include <QtCore/QString>
@@ -20,17 +20,13 @@ MainWindow::MainWindow(QWidget* parent) : QMainWindow(parent)
     setupUiMenu();
     setWindowIcon(QIcon(":/Graphics/Images/CasparCG.ico"));
 
-    showStart();
-
     qApp->installEventFilter(this);
 }
 
 void MainWindow::setupUiMenu()
 {
      QMenu* fileMenu = new QMenu(this);
-     fileMenu->addAction("&Open", this, SLOT(closeWindow()), QKeySequence::fromString("Ctrl+O"));
-     fileMenu->addSeparator();
-     fileMenu->addAction("&Quit", this, SLOT(closeWindow()), QKeySequence::fromString("Ctrl+Q"));
+     fileMenu->addAction("&Quit", this, SLOT(close()), QKeySequence::fromString("Ctrl+Q"));
 
      QMenu* helpMenu = new QMenu(this);
      helpMenu->addAction("&About CasparCG Demo", this, SLOT(showAboutDialog()), QKeySequence::fromString("Ctrl+A"));
@@ -54,10 +50,15 @@ bool MainWindow::eventFilter(QObject* target, QEvent* event)
     return QObject::eventFilter(target, event);
 }
 
-void MainWindow::enableDemoButton(const QString& buttonName)
+void MainWindow::removeWidgets()
 {
     while(!this->frameWidgets->layout()->isEmpty())
         delete this->frameWidgets->layout()->takeAt(0)->widget();
+}
+
+void MainWindow::enableDemoButton(const QString& buttonName)
+{
+    removeWidgets();
 
     foreach(QPushButton* button, this->findChildren<QPushButton*>())
         button->setEnabled(true);
@@ -71,10 +72,62 @@ void MainWindow::showAboutDialog()
     dialog->show();
 }
 
-void MainWindow::showStart()
+void MainWindow::connectDevice()
 {
-    enableDemoButton("pushButtonStart");
-    this->frameWidgets->layout()->addWidget(new StartWidget(this));
+    this->device = new CasparDevice(this);
+
+    QObject::connect(this->device, SIGNAL(connectionStateChanged(CasparDevice&)), this, SLOT(deviceConnectionStateChanged(CasparDevice&)));
+    QObject::connect(this->device, SIGNAL(versionChanged(const CasparVersion&, CasparDevice&)), this, SLOT(deviceVersionChanged(const CasparVersion&, CasparDevice&)));
+
+    if (this->lineEditPort->text().isEmpty())
+        this->device->connect(this->lineEditName->text());
+    else
+        this->device->connect(this->lineEditName->text(), this->lineEditPort->text().toInt());
+}
+
+void MainWindow::disconnectDevice()
+{
+    this->device->disconnect();
+}
+
+void MainWindow::deviceConnectionStateChanged(CasparDevice& device)
+{
+    if (device.isConnected())
+    {
+        this->pushButtonConnect->setEnabled(false);
+        this->pushButtonDisconnect->setEnabled(true);
+        this->pushButtonBigFour->setEnabled(true);
+        this->pushButtonSqueeze->setEnabled(true);
+        this->pushButtonMixer->setEnabled(true);
+        this->pushButtonDynamicGraphics->setEnabled(true);
+        this->pushButtonDigitalVideoEffects->setEnabled(true);
+
+        device.refreshVersion();
+    }
+    else
+    {
+        removeWidgets();
+
+        this->labelVersion->clear();
+        this->pushButtonConnect->setEnabled(true);
+        this->pushButtonDisconnect->setEnabled(false);
+        this->pushButtonBigFour->setEnabled(false);
+        this->pushButtonSqueeze->setEnabled(false);
+        this->pushButtonMixer->setEnabled(false);
+        this->pushButtonDynamicGraphics->setEnabled(false);
+        this->pushButtonDigitalVideoEffects->setEnabled(false);
+    }
+}
+
+void MainWindow::deviceVersionChanged(const CasparVersion& version, CasparDevice& device)
+{
+    this->labelVersion->setText(version.getVersion());
+}
+
+void MainWindow::showBigFour()
+{
+    enableDemoButton("pushButtonBigFour");
+    this->frameWidgets->layout()->addWidget(new BigFourWidget(this));
 }
 
 void MainWindow::showSqueeze()

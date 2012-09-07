@@ -69,16 +69,16 @@ win32:CONFIG(release, debug|release): LIBS += -L$$OUT_PWD/../Common/release/ -lC
 else:win32:CONFIG(debug, debug|release): LIBS += -L$$OUT_PWD/../Common/debug/ -lCommon
 else:unix: LIBS += -L$$OUT_PWD/../Common/ -lCommon
 
+DEPENDPATH += $$PWD/../BigFour
+INCLUDEPATH += $$PWD/../BigFour
+INCLUDEPATH += $$PWD/../../build/BigFour
+win32:CONFIG(release, debug|release): LIBS += -L$$OUT_PWD/../BigFour/release/ -lBigFour
+else:win32:CONFIG(debug, debug|release): LIBS += -L$$OUT_PWD/../BigFour/debug/ -lBigFour
+else:unix: LIBS += -L$$OUT_PWD/../BigFour/ -lBigFour
+
 DEPENDPATH += $$PWD/../Squeeze
 INCLUDEPATH += $$PWD/../Squeeze
 INCLUDEPATH += $$PWD/../../build/Squeeze
 win32:CONFIG(release, debug|release): LIBS += -L$$OUT_PWD/../Squeeze/release/ -lSqueeze
 else:win32:CONFIG(debug, debug|release): LIBS += -L$$OUT_PWD/../Squeeze/debug/ -lSqueeze
 else:unix: LIBS += -L$$OUT_PWD/../Squeeze/ -lSqueeze
-
-DEPENDPATH += $$PWD/../Start
-INCLUDEPATH += $$PWD/../Start
-INCLUDEPATH += $$PWD/../../build/Start
-win32:CONFIG(release, debug|release): LIBS += -L$$OUT_PWD/../Start/release/ -lStart
-else:win32:CONFIG(debug, debug|release): LIBS += -L$$OUT_PWD/../Start/debug/ -lStart
-else:unix: LIBS += -L$$OUT_PWD/../Start/ -lStart
