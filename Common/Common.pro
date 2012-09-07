@@ -18,4 +18,4 @@ SOURCES += \
 HEADERS += \
     Global.h \
     StatusbarEvent.h \
-    EventEnum.h
+    Enum.h

@@ -1,7 +1,7 @@
 #include "StatusbarEvent.h"
-#include "EventEnum.h"
+#include "Enum.h"
 
-StatusbarEvent::StatusbarEvent(const QString& message) : QEvent(static_cast<QEvent::Type>(EventEnum::Statusbar))
+StatusbarEvent::StatusbarEvent(const QString& message) : QEvent(static_cast<QEvent::Type>(Enum::EventType::StatusbarMessage))
 {
     this->message = message;
 }

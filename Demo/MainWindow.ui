@@ -38,12 +38,12 @@
        </property>
        <layout class="QVBoxLayout" name="verticalLayout_2">
         <item>
-         <widget class="QPushButton" name="pushButtonHome">
+         <widget class="QPushButton" name="pushButtonStart">
           <property name="focusPolicy">
            <enum>Qt::NoFocus</enum>
           </property>
           <property name="text">
-           <string>Home</string>
+           <string>Start</string>
           </property>
          </widget>
         </item>
@@ -160,7 +160,7 @@
    </hints>
   </connection>
   <connection>
-   <sender>pushButtonHome</sender>
+   <sender>pushButtonStart</sender>
    <signal>clicked()</signal>
    <receiver>MainWindow</receiver>
    <slot>showStart()</slot>

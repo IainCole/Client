@@ -1,6 +1,6 @@
 #include "MainWindow.h"
 #include "AboutDialog.h"
-#include "EventEnum.h"
+#include "Enum.h"
 #include "StatusbarEvent.h"
 #include "SqueezeWidget.h"
 #include "StartWidget.h"
@@ -19,8 +19,6 @@ MainWindow::MainWindow(QWidget* parent) : QMainWindow(parent)
     setupUi(this);
     setupUiMenu();
     setWindowIcon(QIcon(":/Graphics/Images/CasparCG.ico"));
-
-    //setGeometry(QStyle::alignedRect(Qt::LeftToRight, Qt::AlignCenter, size(), qApp->desktop()->availableGeometry()));
 
     showStart();
 
@@ -47,7 +45,7 @@ void MainWindow::setupUiMenu()
 
 bool MainWindow::eventFilter(QObject* target, QEvent* event)
 {
-    if(event->type() == static_cast<QEvent::Type>(EventEnum::Statusbar))
+    if(event->type() == static_cast<QEvent::Type>(Enum::EventType::StatusbarMessage))
     {
         StatusbarEvent* statusbarEvent = static_cast<StatusbarEvent*>(event);
         statusBar()->showMessage(statusbarEvent->getMessage(), 1000);
@@ -58,13 +56,13 @@ bool MainWindow::eventFilter(QObject* target, QEvent* event)
 
 void MainWindow::enableDemoButton(const QString& buttonName)
 {
+    while(!this->frameWidgets->layout()->isEmpty())
+        delete this->frameWidgets->layout()->takeAt(0)->widget();
+
     foreach(QPushButton* button, this->findChildren<QPushButton*>())
         button->setEnabled(true);
 
     this->findChild<QPushButton*>(buttonName)->setEnabled(false);
-
-    while(!this->frameWidgets->layout()->isEmpty())
-        delete this->frameWidgets->layout()->takeAt(0)->widget();
 }
 
 void MainWindow::showAboutDialog()
@@ -75,7 +73,7 @@ void MainWindow::showAboutDialog()
 
 void MainWindow::showStart()
 {
-    enableDemoButton("pushButtonHome");
+    enableDemoButton("pushButtonStart");
     this->frameWidgets->layout()->addWidget(new StartWidget(this));
 }
 
