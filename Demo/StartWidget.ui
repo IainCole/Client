@@ -1,13 +1,13 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <ui version="4.0">
- <class>SqueezeWidget</class>
- <widget class="QWidget" name="SqueezeWidget">
+ <class>StartWidget</class>
+ <widget class="QWidget" name="StartWidget">
   <property name="geometry">
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>499</width>
-    <height>431</height>
+    <width>509</width>
+    <height>407</height>
    </rect>
   </property>
   <property name="windowTitle">
@@ -82,10 +82,7 @@
           <string/>
          </property>
          <property name="pixmap">
-          <pixmap resource="Resource.qrc">:/Graphics/Images/Picture.png</pixmap>
-         </property>
-         <property name="scaledContents">
-          <bool>true</bool>
+          <pixmap resource="Resource.qrc">:/Graphics/Images/Connection.png</pixmap>
          </property>
          <property name="alignment">
           <set>Qt::AlignCenter</set>
@@ -93,30 +90,57 @@
         </widget>
        </item>
        <item>
-        <layout class="QHBoxLayout" name="horizontalLayout_2">
+        <layout class="QHBoxLayout" name="horizontalLayoutInput">
          <item>
-          <widget class="QPushButton" name="pushButtonStartDemo">
-           <property name="minimumSize">
-            <size>
-             <width>0</width>
-             <height>46</height>
-            </size>
+          <widget class="QLineEdit" name="lineEditName">
+           <property name="focusPolicy">
+            <enum>Qt::ClickFocus</enum>
            </property>
-           <property name="text">
-            <string>Start Demo</string>
+           <property name="placeholderText">
+            <string>Hostname / IP</string>
            </property>
           </widget>
          </item>
          <item>
-          <widget class="QPushButton" name="pushButtonStopDemo">
-           <property name="minimumSize">
+          <widget class="QLineEdit" name="lineEditPort">
+           <property name="maximumSize">
             <size>
-             <width>0</width>
-             <height>46</height>
+             <width>61</width>
+             <height>16777215</height>
             </size>
            </property>
+           <property name="focusPolicy">
+            <enum>Qt::ClickFocus</enum>
+           </property>
+           <property name="placeholderText">
+            <string>5250</string>
+           </property>
+          </widget>
+         </item>
+        </layout>
+       </item>
+       <item>
+        <layout class="QHBoxLayout" name="horizontalLayoutConnection">
+         <item>
+          <widget class="QPushButton" name="pushButtonConnect">
+           <property name="focusPolicy">
+            <enum>Qt::NoFocus</enum>
+           </property>
            <property name="text">
-            <string>Stop Demo</string>
+            <string>Connect</string>
+           </property>
+          </widget>
+         </item>
+         <item>
+          <widget class="QPushButton" name="pushButtonDisconnect">
+           <property name="enabled">
+            <bool>false</bool>
+           </property>
+           <property name="focusPolicy">
+            <enum>Qt::NoFocus</enum>
+           </property>
+           <property name="text">
+            <string>Disconnect</string>
            </property>
           </widget>
          </item>
@@ -141,8 +165,42 @@
  <resources>
   <include location="Resource.qrc"/>
  </resources>
- <connections/>
+ <connections>
+  <connection>
+   <sender>pushButtonConnect</sender>
+   <signal>clicked()</signal>
+   <receiver>StartWidget</receiver>
+   <slot>connectDevice()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>175</x>
+     <y>354</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>211</x>
+     <y>407</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>pushButtonDisconnect</sender>
+   <signal>clicked()</signal>
+   <receiver>StartWidget</receiver>
+   <slot>disconnectDevice()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>321</x>
+     <y>350</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>392</x>
+     <y>404</y>
+    </hint>
+   </hints>
+  </connection>
+ </connections>
  <slots>
-  <slot>startDemo()</slot>
+  <slot>connectDevice()</slot>
+  <slot>disconnectDevice()</slot>
  </slots>
 </ui>

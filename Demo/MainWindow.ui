@@ -35,7 +35,7 @@
       <property name="childrenCollapsible">
        <bool>false</bool>
       </property>
-      <widget class="QFrame" name="frame">
+      <widget class="QFrame" name="frameButtons">
        <property name="maximumSize">
         <size>
          <width>200</width>
@@ -50,77 +50,17 @@
        </property>
        <layout class="QVBoxLayout" name="verticalLayout_2">
         <item>
-         <layout class="QHBoxLayout" name="horizontalLayoutInput">
-          <item>
-           <widget class="QLineEdit" name="lineEditName">
-            <property name="focusPolicy">
-             <enum>Qt::ClickFocus</enum>
-            </property>
-            <property name="placeholderText">
-             <string>Hostname / IP</string>
-            </property>
-           </widget>
-          </item>
-          <item>
-           <widget class="QLineEdit" name="lineEditPort">
-            <property name="maximumSize">
-             <size>
-              <width>61</width>
-              <height>16777215</height>
-             </size>
-            </property>
-            <property name="focusPolicy">
-             <enum>Qt::ClickFocus</enum>
-            </property>
-            <property name="placeholderText">
-             <string>5250</string>
-            </property>
-           </widget>
-          </item>
-         </layout>
-        </item>
-        <item>
-         <layout class="QHBoxLayout" name="horizontalLayoutConnection">
-          <item>
-           <widget class="QPushButton" name="pushButtonConnect">
-            <property name="focusPolicy">
-             <enum>Qt::NoFocus</enum>
-            </property>
-            <property name="text">
-             <string>Connect</string>
-            </property>
-           </widget>
-          </item>
-          <item>
-           <widget class="QPushButton" name="pushButtonDisconnect">
-            <property name="enabled">
-             <bool>false</bool>
-            </property>
-            <property name="focusPolicy">
-             <enum>Qt::NoFocus</enum>
-            </property>
-            <property name="text">
-             <string>Disconnect</string>
-            </property>
-           </widget>
-          </item>
-         </layout>
-        </item>
-        <item>
-         <spacer name="verticalSpacer_2">
-          <property name="orientation">
-           <enum>Qt::Vertical</enum>
+         <widget class="QPushButton" name="pushButtonStart">
+          <property name="enabled">
+           <bool>false</bool>
           </property>
-          <property name="sizeType">
-           <enum>QSizePolicy::Fixed</enum>
+          <property name="focusPolicy">
+           <enum>Qt::NoFocus</enum>
           </property>
-          <property name="sizeHint" stdset="0">
-           <size>
-            <width>20</width>
-            <height>40</height>
-           </size>
+          <property name="text">
+           <string>Start</string>
           </property>
-         </spacer>
+         </widget>
         </item>
         <item>
          <widget class="QPushButton" name="pushButtonRecorder">
@@ -215,9 +155,7 @@
         </item>
        </layout>
       </widget>
-      <widget class="QFrame" name="frameWidgets">
-       <layout class="QVBoxLayout" name="verticalLayout_3"/>
-      </widget>
+      <widget class="QFrame" name="frameWidgets"/>
      </widget>
     </item>
    </layout>
@@ -253,8 +191,8 @@
    <slot>showSqueeze()</slot>
    <hints>
     <hint type="sourcelabel">
-     <x>114</x>
-     <y>177</y>
+     <x>133</x>
+     <y>154</y>
     </hint>
     <hint type="destinationlabel">
      <x>7</x>
@@ -269,44 +207,12 @@
    <slot>showBigFour()</slot>
    <hints>
     <hint type="sourcelabel">
-     <x>37</x>
-     <y>133</y>
+     <x>56</x>
+     <y>120</y>
     </hint>
     <hint type="destinationlabel">
      <x>-4</x>
      <y>85</y>
-    </hint>
-   </hints>
-  </connection>
-  <connection>
-   <sender>pushButtonConnect</sender>
-   <signal>clicked()</signal>
-   <receiver>MainWindow</receiver>
-   <slot>connectDevice()</slot>
-   <hints>
-    <hint type="sourcelabel">
-     <x>62</x>
-     <y>53</y>
-    </hint>
-    <hint type="destinationlabel">
-     <x>58</x>
-     <y>652</y>
-    </hint>
-   </hints>
-  </connection>
-  <connection>
-   <sender>pushButtonDisconnect</sender>
-   <signal>clicked()</signal>
-   <receiver>MainWindow</receiver>
-   <slot>disconnectDevice()</slot>
-   <hints>
-    <hint type="sourcelabel">
-     <x>154</x>
-     <y>67</y>
-    </hint>
-    <hint type="destinationlabel">
-     <x>155</x>
-     <y>651</y>
     </hint>
    </hints>
   </connection>
@@ -317,12 +223,28 @@
    <slot>showRecorder()</slot>
    <hints>
     <hint type="sourcelabel">
-     <x>44</x>
-     <y>110</y>
+     <x>63</x>
+     <y>86</y>
     </hint>
     <hint type="destinationlabel">
      <x>-8</x>
      <y>132</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>pushButtonStart</sender>
+   <signal>clicked()</signal>
+   <receiver>MainWindow</receiver>
+   <slot>showStart()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>36</x>
+     <y>37</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>3</x>
+     <y>33</y>
     </hint>
    </hints>
   </connection>

@@ -40,6 +40,7 @@
         <file>Images/Picture.png</file>
         <file>Images/Record.png</file>
         <file>Images/Recording.png</file>
+        <file>Images/Connection.png</file>
     </qresource>
     <qresource prefix="/Appearances">
         <file>Stylesheets/Default.css</file>

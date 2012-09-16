@@ -2,8 +2,6 @@
 
 #include "Global.h"
 
-#include <QtCore/QString>
-
 class CASPAR_EXPORT CasparTemplate
 {
     public:

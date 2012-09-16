@@ -1,9 +1,10 @@
 #pragma once
 
+#include "Global.h"
+
 #include "ui_SqueezeWidget.h"
 
 #include <QtCore/QEvent>
-#include <QtCore/QObject>
 #include <QtGui/QWidget>
 
 class SqueezeWidget : public QWidget, Ui::SqueezeWidget

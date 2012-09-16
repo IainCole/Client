@@ -2,8 +2,6 @@
 
 #include "Global.h"
 
-#include <QtCore/QString>
-
 class CASPAR_EXPORT CasparMedia
 {
     public:
@@ -13,5 +11,6 @@ class CASPAR_EXPORT CasparMedia
         const QString& getType() const;
 
     private:
-        QString name, type;
+        QString name;
+        QString type;
 };

@@ -5,7 +5,6 @@
 #include "ui_BigFourWidget.h"
 
 #include <QtCore/QEvent>
-#include <QtCore/QObject>
 #include <QtGui/QWidget>
 
 class BigFourWidget : public QWidget, Ui::BigFourWidget

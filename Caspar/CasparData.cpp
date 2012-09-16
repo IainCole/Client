@@ -1,8 +1,7 @@
 #include "CasparData.h"
 
-CasparData::CasparData(const QString& name)
+CasparData::CasparData(const QString& name) : name(name)
 {
-    this->name = name;
 }
 
 const QString& CasparData::getName() const

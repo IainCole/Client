@@ -1,9 +1,8 @@
 #pragma once
 
-#include "CasparDevice.h"
+#include "Global.h"
 
-#include <QtCore/QList>
-#include <QtCore/QObject>
+#include "CasparDevice.h"
 
 class Connection
 {

@@ -1,8 +1,5 @@
 #include "SqueezeWidget.h"
 
-#include <QtCore/QDebug>
-#include <QtCore/QString>
-
 SqueezeWidget::SqueezeWidget(QWidget* parent) : QWidget(parent)
 {
     setupUi(this);

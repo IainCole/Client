@@ -1,8 +1,7 @@
 #include "CasparVersion.h"
 
-CasparVersion::CasparVersion(const QString& version)
+CasparVersion::CasparVersion(const QString& version) : version(version)
 {
-    this->version = version;
 }
 
 const QString& CasparVersion::getVersion() const

@@ -1,16 +1,11 @@
 #include "AMCPDevice.h"
 
-#include <QtCore/QDebug>
 #include <QtCore/QRegExp>
-#include <QtCore/QStringList>
 #include <QtNetwork/QAbstractSocket>
 
-AMCPDevice::AMCPDevice(QObject* parent) : QObject(parent)
+AMCPDevice::AMCPDevice(QObject* parent) : QObject(parent),
+                                          command(AMCPDevice::NONE), state(AMCPDevice::ExpectingHeader), connected(false)
 {
-    this->connected = false;
-    this->command = AMCPDevice::NONE;
-    this->state = AMCPDevice::ExpectingHeader;
-
     this->socket = new QTcpSocket(this);
     QObject::connect(this->socket, SIGNAL(readyRead()), this, SLOT(readMessage()));
     QObject::connect(this->socket, SIGNAL(connected()), this, SLOT(setConnected()));

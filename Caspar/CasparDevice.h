@@ -8,10 +8,6 @@
 #include "CasparVersion.h"
 #include "CasparData.h"
 
-#include <QtCore/QList>
-#include <QtCore/QObject>
-#include <QtCore/QString>
-
 class CASPAR_EXPORT CasparDevice : public AMCPDevice
 {
     Q_OBJECT

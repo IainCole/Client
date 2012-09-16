@@ -18,7 +18,8 @@ HEADERS += \
     RecorderWidget.h \
     Global.h \
     Connection.h \
-    BigFourWidget.h
+    BigFourWidget.h \
+    StartWidget.h
 
 SOURCES += \
     MainWindow.cpp \
@@ -27,14 +28,16 @@ SOURCES += \
     SqueezeWidget.cpp \
     RecorderWidget.cpp \
     BigFourWidget.cpp \
-    Connection.cpp
+    Connection.cpp \
+    StartWidget.cpp
 
 FORMS += \
     MainWindow.ui \
     AboutDialog.ui \
     SqueezeWidget.ui \
     RecorderWidget.ui \
-    BigFourWidget.ui
+    BigFourWidget.ui \
+    StartWidget.ui
 
 RESOURCES += \
     Resource.qrc
@@ -77,7 +80,8 @@ OTHER_FILES += \
     Images/FastForwardEnd.png \
     Images/FastForward.png \
     Images/Recording.png \
-    Images/Record.png
+    Images/Record.png \
+    Images/Connection.png
 
 DEPENDPATH += $$PWD/../Caspar
 INCLUDEPATH += $$PWD/../Caspar

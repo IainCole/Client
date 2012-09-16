@@ -1,15 +1,13 @@
 #include "MainWindow.h"
-#include "Global.h"
-#include "Connection.h"
 #include "AboutDialog.h"
-#include "Enum.h"
-#include "StatusbarEvent.h"
-#include "RecorderWidget.h"
 #include "BigFourWidget.h"
+#include "Connection.h"
+#include "Enum.h"
+#include "RecorderWidget.h"
+#include "StatusbarEvent.h"
 #include "SqueezeWidget.h"
+#include "StartWidget.h"
 
-#include <QtCore/QDebug>
-#include <QtCore/QString>
 #include <QtGui/QDesktopWidget>
 #include <QtGui/QMenu>
 #include <QtGui/QMenuBar>
@@ -24,16 +22,25 @@ MainWindow::MainWindow(QWidget* parent) : QMainWindow(parent)
     setWindowIcon(QIcon(":/Graphics/Images/CasparCG.ico"));
     setWindowTitle(QString("%1 %2.%3").arg(this->windowTitle()).arg(MAJOR_VERSION).arg(MINOR_VERSION));
 
+    this->stackedLayout = new QStackedLayout();
+    stackedLayout->addWidget(new StartWidget(this));
+    stackedLayout->addWidget(new RecorderWidget(this));
+    stackedLayout->addWidget(new BigFourWidget(this));
+    stackedLayout->addWidget(new SqueezeWidget(this));
+    this->frameWidgets->setLayout(stackedLayout);
+
     qApp->installEventFilter(this);
+
+    QObject::connect(&Connection::getInstance().getDevice(), SIGNAL(connectionStateChanged(CasparDevice&)), this, SLOT(deviceConnectionStateChanged(CasparDevice&)));
 }
 
 void MainWindow::setupUiMenu()
 {
      QMenu* fileMenu = new QMenu(this);
-     fileMenu->addAction("&Quit", this, SLOT(close()), QKeySequence::fromString("Ctrl+Q"));
+     fileMenu->addAction("&Quit", this, SLOT(close()));
 
      QMenu* helpMenu = new QMenu(this);
-     helpMenu->addAction("&About CasparCG Demo", this, SLOT(showAboutDialog()), QKeySequence::fromString("Ctrl+A"));
+     helpMenu->addAction("&About CasparCG Demo", this, SLOT(showAboutDialog()));
 
      QMenuBar* menuBar = new QMenuBar(this);
      menuBar->setSizePolicy(QSizePolicy::Fixed, QSizePolicy::Fixed);
@@ -48,26 +55,27 @@ bool MainWindow::eventFilter(QObject* target, QEvent* event)
     if(event->type() == static_cast<QEvent::Type>(Enum::EventType::StatusbarMessage))
     {
         StatusbarEvent* statusbarEvent = static_cast<StatusbarEvent*>(event);
-        statusBar()->showMessage(statusbarEvent->getMessage(), 1000);
+        statusBar()->showMessage(statusbarEvent->getMessage(), statusbarEvent->getDelay());
     }
 
     return QObject::eventFilter(target, event);
 }
 
-void MainWindow::removeWidgets()
+void MainWindow::deviceConnectionStateChanged(CasparDevice& device)
 {
-    while(!this->frameWidgets->layout()->isEmpty())
-        delete this->frameWidgets->layout()->takeAt(0)->widget();
+    if (device.isConnected())
+        showStart();
+    else
+        foreach(QPushButton* button, this->frameButtons->findChildren<QPushButton*>())
+            button->setEnabled(false);
 }
 
 void MainWindow::enableDemoButton(const QString& buttonName)
 {
-    removeWidgets();
-
-    foreach(QPushButton* button, this->findChildren<QPushButton*>())
+    foreach(QPushButton* button, this->frameButtons->findChildren<QPushButton*>())
         button->setEnabled(true);
 
-    this->findChild<QPushButton*>(buttonName)->setEnabled(false);
+    this->frameButtons->findChild<QPushButton*>(buttonName)->setEnabled(false);
 }
 
 void MainWindow::showAboutDialog()
@@ -76,73 +84,26 @@ void MainWindow::showAboutDialog()
     dialog->show();
 }
 
-void MainWindow::connectDevice()
+void MainWindow::showStart()
 {
-    QObject::connect(&Connection::getInstance().getDevice(), SIGNAL(connectionStateChanged(CasparDevice&)), this, SLOT(deviceConnectionStateChanged(CasparDevice&)));
-    QObject::connect(&Connection::getInstance().getDevice(), SIGNAL(versionChanged(const CasparVersion&, CasparDevice&)), this, SLOT(deviceVersionChanged(const CasparVersion&, CasparDevice&)));
-
-    if (this->lineEditPort->text().isEmpty())
-        Connection::getInstance().connect(this->lineEditName->text());
-    else
-        Connection::getInstance().connect(this->lineEditName->text(), this->lineEditPort->text().toInt());
-}
-
-void MainWindow::disconnectDevice()
-{
-    Connection::getInstance().disconnect();
-}
-
-void MainWindow::deviceConnectionStateChanged(CasparDevice& device)
-{
-    if (device.isConnected())
-    {
-        this->pushButtonConnect->setEnabled(false);
-        this->pushButtonDisconnect->setEnabled(true);
-        this->pushButtonRecorder->setEnabled(true);
-        this->pushButtonBigFour->setEnabled(true);
-        this->pushButtonSqueeze->setEnabled(true);
-        this->pushButtonMixer->setEnabled(true);
-        this->pushButtonDynamicGraphics->setEnabled(true);
-        this->pushButtonDigitalVideoEffects->setEnabled(true);
-
-        device.refreshVersion();
-    }
-    else
-    {
-        removeWidgets();
-
-        statusBar()->clearMessage();
-
-        this->pushButtonConnect->setEnabled(true);
-        this->pushButtonDisconnect->setEnabled(false);
-        this->pushButtonRecorder->setEnabled(false);
-        this->pushButtonBigFour->setEnabled(false);
-        this->pushButtonSqueeze->setEnabled(false);
-        this->pushButtonMixer->setEnabled(false);
-        this->pushButtonDynamicGraphics->setEnabled(false);
-        this->pushButtonDigitalVideoEffects->setEnabled(false);
-    }
-}
-
-void MainWindow::deviceVersionChanged(const CasparVersion& version, CasparDevice& device)
-{
-    statusBar()->showMessage(QString("Connected to %1 running version %2").arg(device.getName()).arg(version.getVersion()));
+    enableDemoButton("pushButtonStart");
+    this->stackedLayout->setCurrentIndex(0);
 }
 
 void MainWindow::showRecorder()
 {
     enableDemoButton("pushButtonRecorder");
-    this->frameWidgets->layout()->addWidget(new RecorderWidget(this));
+    this->stackedLayout->setCurrentIndex(1);
 }
 
 void MainWindow::showBigFour()
 {
     enableDemoButton("pushButtonBigFour");
-    this->frameWidgets->layout()->addWidget(new BigFourWidget(this));
+    this->stackedLayout->setCurrentIndex(2);
 }
 
 void MainWindow::showSqueeze()
 {
     enableDemoButton("pushButtonSqueeze");
-    this->frameWidgets->layout()->addWidget(new SqueezeWidget(this));
+    this->stackedLayout->setCurrentIndex(3);
 }

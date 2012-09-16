@@ -2,9 +2,6 @@
 
 #include "Global.h"
 
-#include <QtCore/QList>
-#include <QtCore/QObject>
-#include <QtCore/QString>
 #include <QtNetwork/QTcpSocket>
 
 class CASPAR_EXPORT AMCPDevice : public QObject
@@ -65,9 +62,11 @@ class CASPAR_EXPORT AMCPDevice : public QObject
             ExpectingMultiline
         };
 
+        int code;
+        int state;
         bool connected;
-        int code, state;
-        QString line, previousLine;
+        QString line;
+        QString previousLine;
 
         void parseLine(const QString& line);
         void parseHeader(const QString& line);

@@ -1,8 +1,7 @@
 #include "CasparTemplate.h"
 
-CasparTemplate::CasparTemplate(const QString& name)
+CasparTemplate::CasparTemplate(const QString& name) : name(name)
 {
-    this->name = name;
 }
 
 const QString& CasparTemplate::getName() const

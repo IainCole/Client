@@ -1,5 +1,7 @@
 #pragma once
 
+#include "Global.h"
+
 #include "ui_AboutDialog.h"
 
 #include <QtGui/QDialog>
