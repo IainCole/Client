@@ -62,7 +62,6 @@ OTHER_FILES += \
     Images/CheckboxCheckedPressed.png \
     Images/CheckboxCheckedHover.png \
     Images/CheckboxChecked.png \
-    Images/Logo.png \
     Images/CasparCG.png \
     Windows.rc \
     Images/CasparCG.ico \
@@ -72,13 +71,6 @@ OTHER_FILES += \
     Images/ArrowRight.png \
     Stylesheets/Unix.css \
     Images/Picture.png \
-    Images/Stop.png \
-    Images/Play.png \
-    Images/Pause.png \
-    Images/FastRewindStart.png \
-    Images/FastRewind.png \
-    Images/FastForwardEnd.png \
-    Images/FastForward.png \
     Images/Recording.png \
     Images/Record.png \
     Images/Connection.png

@@ -23,20 +23,12 @@
         <file>Images/RadiobuttonUnchecked.png</file>
         <file>Images/RadiobuttonUncheckedHover.png</file>
         <file>Images/RadiobuttonUncheckedPressed.png</file>
-        <file>Images/Logo.png</file>
         <file>Images/CasparCG.png</file>
         <file>Images/CasparCG.ico</file>
         <file>Images/ArrowLeft.png</file>
         <file>Images/ArrowLeftDisabled.png</file>
         <file>Images/ArrowRight.png</file>
         <file>Images/ArrowRightDisabled.png</file>
-        <file>Images/FastForward.png</file>
-        <file>Images/FastForwardEnd.png</file>
-        <file>Images/FastRewind.png</file>
-        <file>Images/FastRewindStart.png</file>
-        <file>Images/Pause.png</file>
-        <file>Images/Play.png</file>
-        <file>Images/Stop.png</file>
         <file>Images/Picture.png</file>
         <file>Images/Record.png</file>
         <file>Images/Recording.png</file>
