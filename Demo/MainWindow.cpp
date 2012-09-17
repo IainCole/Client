@@ -55,7 +55,10 @@ bool MainWindow::eventFilter(QObject* target, QEvent* event)
     if(event->type() == static_cast<QEvent::Type>(Enum::EventType::StatusbarMessage))
     {
         StatusbarEvent* statusbarEvent = static_cast<StatusbarEvent*>(event);
-        statusBar()->showMessage(statusbarEvent->getMessage(), statusbarEvent->getDelay());
+        if (statusbarEvent->getTimeout() == 0)
+            statusBar()->showMessage(statusbarEvent->getMessage());
+        else
+            statusBar()->showMessage(statusbarEvent->getMessage(), statusbarEvent->getTimeout());
     }
 
     return QObject::eventFilter(target, event);

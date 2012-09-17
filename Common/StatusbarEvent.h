@@ -7,12 +7,12 @@
 class COMMON_EXPORT StatusbarEvent : public QEvent
 {
     public:
-        explicit StatusbarEvent(const QString& message, int delay = 3000);
+        explicit StatusbarEvent(const QString& message, int timeout = 0);
 
-        int getDelay() const;
+        int getTimeout() const;
         const QString& getMessage() const;
 
     private:
-        int delay;
+        int timeout;
         QString message;
 };

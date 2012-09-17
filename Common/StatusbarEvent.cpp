@@ -1,17 +1,16 @@
 #include "StatusbarEvent.h"
 #include "Enum.h"
 
-StatusbarEvent::StatusbarEvent(const QString& message, int delay) : QEvent(static_cast<QEvent::Type>(Enum::EventType::StatusbarMessage)),
-                                                                    delay(delay), message(message)
+StatusbarEvent::StatusbarEvent(const QString& message, int timeout) : QEvent(static_cast<QEvent::Type>(Enum::EventType::StatusbarMessage)), timeout(timeout), message(message)
 {
-}
-
-int StatusbarEvent::getDelay() const
-{
-    return this->delay;
 }
 
 const QString& StatusbarEvent::getMessage() const
 {
     return this->message;
+}
+
+int StatusbarEvent::getTimeout() const
+{
+    return this->timeout;
 }

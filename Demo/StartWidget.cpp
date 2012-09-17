@@ -50,6 +50,8 @@ void StartWidget::deviceConnectionStateChanged(CasparDevice& device)
     {
         this->pushButtonConnect->setEnabled(true);
         this->pushButtonDisconnect->setEnabled(false);
+
+        qApp->postEvent(qApp, new StatusbarEvent(""));
     }
 }
 
