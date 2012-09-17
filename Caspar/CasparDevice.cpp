@@ -1,12 +1,6 @@
 #include "CasparDevice.h"
 
-#include <QtCore/QStringList>
-
 CasparDevice::CasparDevice(QObject* parent) : AMCPDevice(parent)
-{
-}
-
-CasparDevice::~CasparDevice()
 {
 }
 
@@ -53,69 +47,49 @@ void CasparDevice::refreshTemplate()
 void CasparDevice::addTemplate(int channel, int flashlayer, const QString& name, int playOnLoad, const QString& data)
 {
     AMCPDevice::writeMessage(QString("CG %1 ADD %2 %3 %4 %5")
-                             .arg(channel)
-                             .arg(flashlayer)
-                             .arg(name)
-                             .arg(playOnLoad)
-                             .arg(data));
+                             .arg(channel).arg(flashlayer).arg(name).arg(playOnLoad).arg(data));
 }
 
-void CasparDevice::addTemplate(int channel, int layer, int flashlayer, const QString& name, int playOnLoad, const QString& data)
+void CasparDevice::addTemplate(int channel, int videolayer, int flashlayer, const QString& name, int playOnLoad, const QString& data)
 {
     AMCPDevice::writeMessage(QString("CG %1-%2 ADD %3 %4 %5 %6")
-                             .arg(channel)
-                             .arg(layer)
-                             .arg(flashlayer)
-                             .arg(name)
-                             .arg(playOnLoad)
-                             .arg(data));
+                             .arg(channel).arg(videolayer).arg(flashlayer).arg(name).arg(playOnLoad).arg(data));
 }
 
 void CasparDevice::playTemplate(int channel, int flashlayer)
 {
     AMCPDevice::writeMessage(QString("CG %1 PLAY %2")
-                             .arg(channel)
-                             .arg(flashlayer));
+                             .arg(channel).arg(flashlayer));
 }
 
 void CasparDevice::playTemplate(int channel, int flashlayer, const QString& item)
 {
     AMCPDevice::writeMessage(QString("CG %1 ADD %2 %3 1")
-                             .arg(channel)
-                             .arg(flashlayer)
-                             .arg(item));
+                             .arg(channel).arg(flashlayer).arg(item));
 }
 
-void CasparDevice::playTemplate(int channel, int layer, int flashlayer)
+void CasparDevice::playTemplate(int channel, int videolayer, int flashlayer)
 {
     AMCPDevice::writeMessage(QString("CG %1-%2 PLAY %3")
-                             .arg(channel)
-                             .arg(layer)
-                             .arg(flashlayer));
+                             .arg(channel).arg(videolayer).arg(flashlayer));
 }
 
-void CasparDevice::playTemplate(int channel, int layer, int flashlayer, const QString& item)
+void CasparDevice::playTemplate(int channel, int videolayer, int flashlayer, const QString& item)
 {
     AMCPDevice::writeMessage(QString("CG %1-%2 ADD %3 %4 1")
-                             .arg(channel)
-                             .arg(layer)
-                             .arg(flashlayer)
-                             .arg(item));
+                             .arg(channel).arg(videolayer).arg(flashlayer).arg(item));
 }
 
 void CasparDevice::stopTemplate(int channel, int flashlayer)
 {
     AMCPDevice::writeMessage(QString("CG %1 STOP %2")
-                             .arg(channel)
-                             .arg(flashlayer));
+                             .arg(channel).arg(flashlayer));
 }
 
-void CasparDevice::stopTemplate(int channel, int layer, int flashlayer)
+void CasparDevice::stopTemplate(int channel, int videolayer, int flashlayer)
 {
     AMCPDevice::writeMessage(QString("CG %1-%2 STOP %3")
-                             .arg(channel)
-                             .arg(layer)
-                             .arg(flashlayer));
+                             .arg(channel).arg(videolayer).arg(flashlayer));
 }
 
 void CasparDevice::clearMedia(int channel)
@@ -124,26 +98,22 @@ void CasparDevice::clearMedia(int channel)
                              .arg(channel));
 }
 
-void CasparDevice::clearMedia(int channel, int layer)
+void CasparDevice::clearMedia(int channel, int videolayer)
 {
     AMCPDevice::writeMessage(QString("CLEAR %1-%2")
-                             .arg(channel)
-                             .arg(layer));
+                             .arg(channel).arg(videolayer));
 }
 
 void CasparDevice::playMedia(int channel, const QString& item)
 {
     AMCPDevice::writeMessage(QString("PLAY %1 %2")
-                             .arg(channel)
-                             .arg(item));
+                             .arg(channel).arg(item));
 }
 
-void CasparDevice::playMedia(int channel, int layer, const QString& item)
+void CasparDevice::playMedia(int channel, int videolayer, const QString& item)
 {
     AMCPDevice::writeMessage(QString("PLAY %1-%2 %3")
-                             .arg(channel)
-                             .arg(layer)
-                             .arg(item));
+                             .arg(channel).arg(videolayer).arg(item));
 }
 
 void CasparDevice::stopMedia(int channel)
@@ -152,36 +122,34 @@ void CasparDevice::stopMedia(int channel)
                              .arg(channel));
 }
 
+void CasparDevice::stopMedia(int channel, int videolayer)
+{
+    AMCPDevice::writeMessage(QString("STOP %1-%2")
+                             .arg(channel).arg(videolayer));
+}
+
 void CasparDevice::startRecording(int channel, const QString& filename)
 {
     AMCPDevice::writeMessage(QString("ADD %1 FILE %2")
-                             .arg(channel)
-                             .arg(filename));
+                             .arg(channel).arg(filename));
 }
 
 void CasparDevice::startRecording(int channel, const QString& filename, const QString& params)
 {
     AMCPDevice::writeMessage(QString("ADD %1 FILE %2 %3")
-                             .arg(channel)
-                             .arg(filename)
-                             .arg(params));
+                             .arg(channel).arg(filename).arg(params));
 }
 
-void CasparDevice::startRecording(int channel, int layer, const QString& filename)
+void CasparDevice::startRecording(int channel, int videolayer, const QString& filename)
 {
     AMCPDevice::writeMessage(QString("ADD %1-%2 FILE %3")
-                             .arg(channel)
-                             .arg(layer)
-                             .arg(filename));
+                             .arg(channel).arg(videolayer).arg(filename));
 }
 
-void CasparDevice::startRecording(int channel, int layer, const QString& filename, const QString& params)
+void CasparDevice::startRecording(int channel, int videolayer, const QString& filename, const QString& params)
 {
     AMCPDevice::writeMessage(QString("ADD %1-%2 FILE %3 %4")
-                             .arg(channel)
-                             .arg(layer)
-                             .arg(filename)
-                             .arg(params));
+                             .arg(channel).arg(videolayer).arg(filename).arg(params));
 }
 
 void CasparDevice::stopRecording(int channel)
@@ -190,330 +158,202 @@ void CasparDevice::stopRecording(int channel)
                              .arg(channel));
 }
 
-void CasparDevice::stopRecording(int channel, int layer)
+void CasparDevice::stopRecording(int channel, int videolayer)
 {
     AMCPDevice::writeMessage(QString("REMOVE %1-%2 FILE")
-                             .arg(channel)
-                             .arg(layer));
-}
-
-void CasparDevice::stopMedia(int channel, int layer)
-{
-    AMCPDevice::writeMessage(QString("STOP %1-%2")
-                             .arg(channel)
-                             .arg(layer));
+                             .arg(channel).arg(videolayer));
 }
 
 void CasparDevice::setVolume(int channel, float volume)
 {
     AMCPDevice::writeMessage(QString("MIXER %1 VOLUME %2")
-                             .arg(channel)
-                             .arg(volume));
+                             .arg(channel).arg(volume));
 }
 
 void CasparDevice::setVolume(int channel, float volume, int duration, QString easing)
 {
     AMCPDevice::writeMessage(QString("MIXER %1 VOLUME %2 %3 %4")
-                             .arg(channel)
-                             .arg(volume)
-                             .arg(duration)
-                             .arg(easing));
+                             .arg(channel).arg(volume).arg(duration).arg(easing));
 }
 
-void CasparDevice::setVolume(int channel, int layer, float volume)
+void CasparDevice::setVolume(int channel, int videolayer, float volume)
 {
     AMCPDevice::writeMessage(QString("MIXER %1-%2 VOLUME %3")
-                             .arg(channel)
-                             .arg(layer)
-                             .arg(volume));
+                             .arg(channel).arg(videolayer).arg(volume));
 }
 
-void CasparDevice::setVolume(int channel, int layer, float volume, int duration, QString easing)
+void CasparDevice::setVolume(int channel, int videolayer, float volume, int duration, QString easing)
 {
     AMCPDevice::writeMessage(QString("MIXER %1-%2 VOLUME %3 %4 %5")
-                             .arg(channel)
-                             .arg(layer)
-                             .arg(volume)
-                             .arg(duration)
-                             .arg(easing));
+                             .arg(channel).arg(videolayer).arg(volume).arg(duration).arg(easing));
 }
 
 void CasparDevice::setOpacity(int channel, float opacity)
 {
     AMCPDevice::writeMessage(QString("MIXER %1 OPACITY %2")
-                             .arg(channel)
-                             .arg(opacity));
+                             .arg(channel).arg(opacity));
 }
 
 void CasparDevice::setOpacity(int channel, float opacity, int duration, QString easing)
 {
     AMCPDevice::writeMessage(QString("MIXER %1 OPACITY %2 %3 %4")
-                             .arg(channel)
-                             .arg(opacity)
-                             .arg(duration)
-                             .arg(easing));
+                             .arg(channel).arg(opacity).arg(duration).arg(easing));
 }
 
-void CasparDevice::setOpacity(int channel, int layer, float opacity)
+void CasparDevice::setOpacity(int channel, int videolayer, float opacity)
 {
     AMCPDevice::writeMessage(QString("MIXER %1-%2 OPACITY %3")
-                             .arg(channel)
-                             .arg(layer)
-                             .arg(opacity));
+                             .arg(channel).arg(videolayer).arg(opacity));
 }
 
-void CasparDevice::setOpacity(int channel, int layer, float opacity, int duration, QString easing)
+void CasparDevice::setOpacity(int channel, int videolayer, float opacity, int duration, QString easing)
 {
     AMCPDevice::writeMessage(QString("MIXER %1-%2 OPACITY %3 %4 %5")
-                             .arg(channel)
-                             .arg(layer)
-                             .arg(opacity)
-                             .arg(duration)
-                             .arg(easing));
+                             .arg(channel).arg(videolayer).arg(opacity).arg(duration).arg(easing));
 }
 
 void CasparDevice::setBrightness(int channel, float brightness)
 {
     AMCPDevice::writeMessage(QString("MIXER %1 BRIGHTNESS %2")
-                             .arg(channel)
-                             .arg(brightness));
+                             .arg(channel).arg(brightness));
 }
 
 void CasparDevice::setBrightness(int channel, float brightness, int duration, QString easing)
 {
     AMCPDevice::writeMessage(QString("MIXER %1 BRIGHTNESS %2 %3 %4")
-                             .arg(channel)
-                             .arg(brightness)
-                             .arg(duration)
-                             .arg(easing));
+                             .arg(channel).arg(brightness).arg(duration).arg(easing));
 }
 
-void CasparDevice::setBrightness(int channel, int layer, float brightness)
+void CasparDevice::setBrightness(int channel, int videolayer, float brightness)
 {
     AMCPDevice::writeMessage(QString("MIXER %1-%2 BRIGHTNESS %3")
-                             .arg(channel)
-                             .arg(layer)
-                             .arg(brightness));
+                             .arg(channel).arg(videolayer).arg(brightness));
 }
 
-void CasparDevice::setBrightness(int channel, int layer, float brightness, int duration, QString easing)
+void CasparDevice::setBrightness(int channel, int videolayer, float brightness, int duration, QString easing)
 {
     AMCPDevice::writeMessage(QString("MIXER %1-%2 BRIGHTNESS %3 %4 %5")
-                             .arg(channel)
-                             .arg(layer)
-                             .arg(brightness)
-                             .arg(duration)
-                             .arg(easing));
+                             .arg(channel).arg(videolayer).arg(brightness).arg(duration).arg(easing));
 }
 
 void CasparDevice::setContrast(int channel, float contrast)
 {
     AMCPDevice::writeMessage(QString("MIXER %1 CONTRAST %2")
-                             .arg(channel)
-                             .arg(contrast));
+                             .arg(channel).arg(contrast));
 }
 
 void CasparDevice::setContrast(int channel, float contrast, int duration, QString easing)
 {
     AMCPDevice::writeMessage(QString("MIXER %1 CONTRAST %2 %3 %4")
-                             .arg(channel)
-                             .arg(contrast)
-                             .arg(duration)
-                             .arg(easing));
+                             .arg(channel).arg(contrast).arg(duration).arg(easing));
 }
 
-void CasparDevice::setContrast(int channel, int layer, float contrast)
+void CasparDevice::setContrast(int channel, int videolayer, float contrast)
 {
     AMCPDevice::writeMessage(QString("MIXER %1-%2 CONTRAST %3")
-                             .arg(channel)
-                             .arg(layer)
-                             .arg(contrast));
+                             .arg(channel).arg(videolayer).arg(contrast));
 }
 
-void CasparDevice::setContrast(int channel, int layer, float contrast, int duration, QString easing)
+void CasparDevice::setContrast(int channel, int videolayer, float contrast, int duration, QString easing)
 {
     AMCPDevice::writeMessage(QString("MIXER %1-%2 CONTRAST %3 %4 %5")
-                             .arg(channel)
-                             .arg(layer)
-                             .arg(contrast)
-                             .arg(duration)
-                             .arg(easing));
+                             .arg(channel).arg(videolayer).arg(contrast).arg(duration).arg(easing));
 }
 
 void CasparDevice::setSaturation(int channel, float saturation)
 {
     AMCPDevice::writeMessage(QString("MIXER %1 SATURATION %2")
-                             .arg(channel)
-                             .arg(saturation));
+                             .arg(channel).arg(saturation));
 }
 
 void CasparDevice::setSaturation(int channel, float saturation, int duration, QString easing)
 {
     AMCPDevice::writeMessage(QString("MIXER %1 SATURATION %2 %3 %4")
-                             .arg(channel)
-                             .arg(saturation)
-                             .arg(duration)
-                             .arg(easing));
+                             .arg(channel).arg(saturation).arg(duration).arg(easing));
 }
 
-void CasparDevice::setSaturation(int channel, int layer, float saturation)
+void CasparDevice::setSaturation(int channel, int videolayer, float saturation)
 {
     AMCPDevice::writeMessage(QString("MIXER %1-%2 SATURATION %3")
-                             .arg(channel)
-                             .arg(layer)
-                             .arg(saturation));
+                             .arg(channel).arg(videolayer).arg(saturation));
 }
 
-void CasparDevice::setSaturation(int channel, int layer, float saturation, int duration, QString easing)
+void CasparDevice::setSaturation(int channel, int videolayer, float saturation, int duration, QString easing)
 {
     AMCPDevice::writeMessage(QString("MIXER %1-%2 SATURATION %3 %4 %5")
-                             .arg(channel)
-                             .arg(layer)
-                             .arg(saturation)
-                             .arg(duration)
-                             .arg(easing));
+                             .arg(channel).arg(videolayer).arg(saturation).arg(duration).arg(easing));
 }
 
 void CasparDevice::setLevels(int channel, float minIn, float maxIn, float gamma, float minOut, float maxOut)
 {
     AMCPDevice::writeMessage(QString("MIXER %1 LEVELS %2 %3 %4 %5 %6")
-                             .arg(channel)
-                             .arg(minIn)
-                             .arg(maxIn)
-                             .arg(gamma)
-                             .arg(minOut)
-                             .arg(maxOut));
+                             .arg(channel).arg(minIn).arg(maxIn).arg(gamma).arg(minOut).arg(maxOut));
 }
 
 void CasparDevice::setLevels(int channel, float minIn, float maxIn, float gamma, float minOut, float maxOut, int duration, QString easing)
 {
     AMCPDevice::writeMessage(QString("MIXER %1 LEVELS %2 %3 %4 %5 %6 %7 %8")
-                             .arg(channel)
-                             .arg(minIn)
-                             .arg(maxIn)
-                             .arg(gamma)
-                             .arg(minOut)
-                             .arg(maxOut)
-                             .arg(duration)
-                             .arg(easing));
+                             .arg(channel).arg(minIn).arg(maxIn).arg(gamma).arg(minOut).arg(maxOut).arg(duration).arg(easing));
 }
 
-void CasparDevice::setLevels(int channel, int layer, float minIn, float maxIn, float gamma, float minOut, float maxOut)
+void CasparDevice::setLevels(int channel, int videolayer, float minIn, float maxIn, float gamma, float minOut, float maxOut)
 {
     AMCPDevice::writeMessage(QString("MIXER %1-%2 LEVELS %3 %4 %5 %6 %7")
-                             .arg(channel)
-                             .arg(layer)
-                             .arg(minIn)
-                             .arg(maxIn)
-                             .arg(gamma)
-                             .arg(minOut)
-                             .arg(maxOut));
+                             .arg(channel).arg(videolayer).arg(minIn).arg(maxIn).arg(gamma).arg(minOut).arg(maxOut));
 }
 
-void CasparDevice::setLevels(int channel, int layer, float minIn, float maxIn, float gamma, float minOut, float maxOut, int duration, QString easing)
+void CasparDevice::setLevels(int channel, int videolayer, float minIn, float maxIn, float gamma, float minOut, float maxOut, int duration, QString easing)
 {
     AMCPDevice::writeMessage(QString("MIXER %1-%2 LEVELS %3 %4 %5 %6 %7 %8 %9")
-                             .arg(channel)
-                             .arg(layer)
-                             .arg(minIn)
-                             .arg(maxIn)
-                             .arg(gamma)
-                             .arg(minOut)
-                             .arg(maxOut)
-                             .arg(duration)
-                             .arg(easing));
+                             .arg(channel).arg(videolayer).arg(minIn).arg(maxIn).arg(gamma).arg(minOut).arg(maxOut).arg(duration).arg(easing));
 }
 
 void CasparDevice::setGeometry(int channel, float positionX, float positionY, float scaleX, float scaleY)
 {
     AMCPDevice::writeMessage(QString("MIXER %1 FILL %2 %3 %4 %5")
-                             .arg(channel)
-                             .arg(positionX)
-                             .arg(positionY)
-                             .arg(scaleX)
-                             .arg(scaleY));
+                             .arg(channel).arg(positionX).arg(positionY).arg(scaleX).arg(scaleY));
 }
 
 void CasparDevice::setGeometry(int channel, float positionX, float positionY, float scaleX, float scaleY, int duration, QString easing)
 {
     AMCPDevice::writeMessage(QString("MIXER %1 FILL %2 %3 %4 %5 %6 %7")
-                             .arg(channel)
-                             .arg(positionX)
-                             .arg(positionY)
-                             .arg(scaleX)
-                             .arg(scaleY)
-                             .arg(duration)
-                             .arg(easing));
+                             .arg(channel).arg(positionX).arg(positionY).arg(scaleX).arg(scaleY).arg(duration).arg(easing));
 }
 
-void CasparDevice::setGeometry(int channel, int layer, float positionX, float positionY, float scaleX, float scaleY)
+void CasparDevice::setGeometry(int channel, int videolayer, float positionX, float positionY, float scaleX, float scaleY)
 {
     AMCPDevice::writeMessage(QString("MIXER %1-%2 FILL %3 %4 %5 %6")
-                             .arg(channel)
-                             .arg(layer)
-                             .arg(positionX)
-                             .arg(positionY)
-                             .arg(scaleX)
-                             .arg(scaleY));
+                             .arg(channel).arg(videolayer).arg(positionX).arg(positionY).arg(scaleX).arg(scaleY));
 }
 
-void CasparDevice::setGeometry(int channel, int layer, float positionX, float positionY, float scaleX, float scaleY, int duration, QString easing)
+void CasparDevice::setGeometry(int channel, int videolayer, float positionX, float positionY, float scaleX, float scaleY, int duration, QString easing)
 {
     AMCPDevice::writeMessage(QString("MIXER %1-%2 FILL %3 %4 %5 %6 %7 %8")
-                             .arg(channel)
-                             .arg(layer)
-                             .arg(positionX)
-                             .arg(positionY)
-                             .arg(scaleX)
-                             .arg(scaleY)
-                             .arg(duration)
-                             .arg(easing));
+                             .arg(channel).arg(videolayer).arg(positionX).arg(positionY).arg(scaleX).arg(scaleY).arg(duration).arg(easing));
 }
 
 void CasparDevice::setClipping(int channel, float positionX, float positionY, float scaleX, float scaleY)
 {
     AMCPDevice::writeMessage(QString("MIXER %1 CLIP %2 %3 %4 %5")
-                             .arg(channel)
-                             .arg(positionX)
-                             .arg(positionY)
-                             .arg(scaleX)
-                             .arg(scaleY));
+                             .arg(channel).arg(positionX).arg(positionY).arg(scaleX).arg(scaleY));
 }
 
 void CasparDevice::setClipping(int channel, float positionX, float positionY, float scaleX, float scaleY, int duration, QString easing)
 {
     AMCPDevice::writeMessage(QString("MIXER %1 CLIP %2 %3 %4 %5 %6 %7")
-                             .arg(channel)
-                             .arg(positionX)
-                             .arg(positionY)
-                             .arg(scaleX)
-                             .arg(scaleY)
-                             .arg(duration)
-                             .arg(easing));
+                             .arg(channel).arg(positionX).arg(positionY).arg(scaleX).arg(scaleY).arg(duration).arg(easing));
 }
 
-void CasparDevice::setClipping(int channel, int layer, float positionX, float positionY, float scaleX, float scaleY)
+void CasparDevice::setClipping(int channel, int videolayer, float positionX, float positionY, float scaleX, float scaleY)
 {
     AMCPDevice::writeMessage(QString("MIXER %1-%2 CLIP %3 %4 %5 %6")
-                             .arg(channel)
-                             .arg(layer)
-                             .arg(positionX)
-                             .arg(positionY)
-                             .arg(scaleX)
-                             .arg(scaleY));
+                             .arg(channel).arg(videolayer).arg(positionX).arg(positionY).arg(scaleX).arg(scaleY));
 }
 
-void CasparDevice::setClipping(int channel, int layer, float positionX, float positionY, float scaleX, float scaleY, int duration, QString easing)
+void CasparDevice::setClipping(int channel, int videolayer, float positionX, float positionY, float scaleX, float scaleY, int duration, QString easing)
 {
     AMCPDevice::writeMessage(QString("MIXER %1-%2 CLIP %3 %4 %5 %6 %7 %8")
-                             .arg(channel)
-                             .arg(layer)
-                             .arg(positionX)
-                             .arg(positionY)
-                             .arg(scaleX)
-                             .arg(scaleY)
-                             .arg(duration)
-                             .arg(easing));
+                             .arg(channel).arg(videolayer).arg(positionX).arg(positionY).arg(scaleX).arg(scaleY).arg(duration).arg(easing));
 }
 
 void CasparDevice::sendNotification()
@@ -543,7 +383,6 @@ void CasparDevice::sendNotification()
             {
                 QString name = response.split("\" ").at(0);
                 name.remove(QRegExp("^\"")).remove(QRegExp("\"$"));
-
                 items.push_back(CasparTemplate(name));
             }
 
@@ -559,7 +398,7 @@ void CasparDevice::sendNotification()
         case AMCPDevice::INFOSYSTEM:
             emit infoSystemChanged(AMCPDevice::response, *this);
             break;
-        case AMCPDevice::DATA:
+        case AMCPDevice::DATALIST:
         {
             QList<CasparData> items;
             foreach (QString response, AMCPDevice::response)
@@ -585,4 +424,3 @@ void CasparDevice::sendNotification()
 
     AMCPDevice::resetDevice();
 }
-
