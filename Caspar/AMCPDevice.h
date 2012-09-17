@@ -2,6 +2,7 @@
 
 #include "Global.h"
 
+#include <QtCore/QObject>
 #include <QtNetwork/QTcpSocket>
 
 class CASPAR_EXPORT AMCPDevice : public QObject
@@ -30,7 +31,7 @@ class CASPAR_EXPORT AMCPDevice : public QObject
             TLS,
             INFO,
             INFOSYSTEM,
-            DATA,
+            DATALIST,
             CLEAR,
             SET,
             MIXER,

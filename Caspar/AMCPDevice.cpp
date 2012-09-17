@@ -103,7 +103,7 @@ AMCPDevice::AMCPCommand AMCPDevice::translateCommand(const QString& command)
     else if (command == "TLS") return AMCPDevice::TLS;
     else if (command == "INFO") return AMCPDevice::INFO;
     else if (command == "INFO SYSTEM") return AMCPDevice::INFOSYSTEM;
-    else if (command == "DATA") return AMCPDevice::DATA;
+    else if (command == "DATA LIST") return AMCPDevice::DATALIST;
     else if (command == "CLEAR") return AMCPDevice::CLEAR;
     else if (command == "SET") return AMCPDevice::SET;
     else if (command == "MIXER") return AMCPDevice::MIXER;
