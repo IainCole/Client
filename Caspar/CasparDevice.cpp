@@ -1,5 +1,7 @@
 #include "CasparDevice.h"
 
+#include <QtCore/QRegExp>
+
 CasparDevice::CasparDevice(QObject* parent) : AMCPDevice(parent)
 {
 }
@@ -42,6 +44,23 @@ void CasparDevice::refreshMedia()
 void CasparDevice::refreshTemplate()
 {
     AMCPDevice::writeMessage("TLS");
+}
+
+void CasparDevice::clearChannel(int channel)
+{
+    AMCPDevice::writeMessage(QString("CLEAR %1")
+                             .arg(channel));
+}
+
+void CasparDevice::clearVideolayer(int channel, int videolayer)
+{
+    AMCPDevice::writeMessage(QString("CLEAR %1-%2")
+                             .arg(channel).arg(videolayer));
+}
+
+void CasparDevice::sendCommand(const QString& command)
+{
+    AMCPDevice::writeMessage(QString("%1").arg(command));
 }
 
 void CasparDevice::addTemplate(int channel, int flashlayer, const QString& name, int playOnLoad, const QString& data)
@@ -90,18 +109,6 @@ void CasparDevice::stopTemplate(int channel, int videolayer, int flashlayer)
 {
     AMCPDevice::writeMessage(QString("CG %1-%2 STOP %3")
                              .arg(channel).arg(videolayer).arg(flashlayer));
-}
-
-void CasparDevice::clearMedia(int channel)
-{
-    AMCPDevice::writeMessage(QString("CLEAR %1")
-                             .arg(channel));
-}
-
-void CasparDevice::clearMedia(int channel, int videolayer)
-{
-    AMCPDevice::writeMessage(QString("CLEAR %1-%2")
-                             .arg(channel).arg(videolayer));
 }
 
 void CasparDevice::playMedia(int channel, const QString& item)
