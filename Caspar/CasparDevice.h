@@ -26,6 +26,11 @@ class CASPAR_EXPORT CasparDevice : public AMCPDevice
         void refreshTemplate();
         void refreshVersion();
 
+        void clearChannel(int channel);
+        void clearVideolayer(int channel, int videolayer);
+
+        void sendCommand(const QString& command);
+
         void addTemplate(int channel, int flashlayer, const QString& name, int playOnLoad, const QString& data);
         void addTemplate(int channel, int videolayer, int flashlayer, const QString& name, int playOnLoad, const QString& data);
 
@@ -35,10 +40,7 @@ class CASPAR_EXPORT CasparDevice : public AMCPDevice
         void playTemplate(int channel, int videolayer, int flashlayer, const QString& item);
 
         void stopTemplate(int channel, int flashlayer);
-        void stopTemplate(int channel, int videolayer, int flashlayer);
-
-        void clearMedia(int channel);
-        void clearMedia(int channel, int videolayer);
+        void stopTemplate(int channel, int videolayer, int flashlayer);      
 
         void playMedia(int channel, const QString& item);
         void playMedia(int channel, int videolayer, const QString& item);
