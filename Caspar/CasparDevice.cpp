@@ -426,6 +426,7 @@ void CasparDevice::sendNotification()
             emit connectionStateChanged(*this);
             break;
         default:
+            emit responseChanged(AMCPDevice::response, *this);
             break;
     }
 

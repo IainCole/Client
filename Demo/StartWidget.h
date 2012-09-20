@@ -16,6 +16,7 @@ class StartWidget : public QWidget, Ui::StartWidget
 
     public:
         explicit StartWidget(QWidget* parent = 0);
+        ~StartWidget();
 
     protected:
         bool eventFilter(QObject* target, QEvent* event);

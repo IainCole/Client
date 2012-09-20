@@ -19,7 +19,8 @@ HEADERS += \
     Global.h \
     Connection.h \
     BigFourWidget.h \
-    StartWidget.h
+    StartWidget.h \
+    FrameWidget.h
 
 SOURCES += \
     MainWindow.cpp \
@@ -29,7 +30,8 @@ SOURCES += \
     RecorderWidget.cpp \
     BigFourWidget.cpp \
     Connection.cpp \
-    StartWidget.cpp
+    StartWidget.cpp \
+    FrameWidget.cpp
 
 FORMS += \
     MainWindow.ui \
@@ -37,7 +39,8 @@ FORMS += \
     SqueezeWidget.ui \
     RecorderWidget.ui \
     BigFourWidget.ui \
-    StartWidget.ui
+    StartWidget.ui \
+    FrameWidget.ui
 
 RESOURCES += \
     Resource.qrc

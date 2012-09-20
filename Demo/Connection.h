@@ -12,9 +12,6 @@ class Connection
 
         static Connection& getInstance();
 
-        void connect(const QString& name, int port = 5250);
-        void disconnect();
-
         CasparDevice& getDevice();
 
     private:

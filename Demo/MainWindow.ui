@@ -76,6 +76,19 @@
          </widget>
         </item>
         <item>
+         <widget class="QPushButton" name="pushButtonFrame">
+          <property name="enabled">
+           <bool>false</bool>
+          </property>
+          <property name="focusPolicy">
+           <enum>Qt::NoFocus</enum>
+          </property>
+          <property name="text">
+           <string>Frame</string>
+          </property>
+         </widget>
+        </item>
+        <item>
          <widget class="QPushButton" name="pushButtonBigFour">
           <property name="enabled">
            <bool>false</bool>
@@ -223,8 +236,8 @@
    <slot>showRecorder()</slot>
    <hints>
     <hint type="sourcelabel">
-     <x>63</x>
-     <y>86</y>
+     <x>83</x>
+     <y>77</y>
     </hint>
     <hint type="destinationlabel">
      <x>-8</x>
@@ -248,6 +261,22 @@
     </hint>
    </hints>
   </connection>
+  <connection>
+   <sender>pushButtonFrame</sender>
+   <signal>clicked()</signal>
+   <receiver>MainWindow</receiver>
+   <slot>showFrame()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>96</x>
+     <y>101</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>5</x>
+     <y>116</y>
+    </hint>
+   </hints>
+  </connection>
  </connections>
  <slots>
   <slot>showSqueeze()</slot>
@@ -256,5 +285,6 @@
   <slot>connectDevice()</slot>
   <slot>disconnectDevice()</slot>
   <slot>showRecorder()</slot>
+  <slot>showFrame()</slot>
  </slots>
 </ui>

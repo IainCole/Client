@@ -10,6 +10,12 @@ StartWidget::StartWidget(QWidget* parent) : QWidget(parent)
     qApp->installEventFilter(this);
 }
 
+StartWidget::~StartWidget()
+{
+    if (Connection::getInstance().getDevice().isConnected())
+        Connection::getInstance().getDevice().disconnect();
+}
+
 bool StartWidget::eventFilter(QObject* target, QEvent* event)
 {
     //if(event->type() == static_cast<QEvent::Type>(EventEnum::Statusbar))
@@ -27,14 +33,14 @@ void StartWidget::connectDevice()
     QObject::connect(&Connection::getInstance().getDevice(), SIGNAL(versionChanged(const CasparVersion&, CasparDevice&)), this, SLOT(deviceVersionChanged(const CasparVersion&, CasparDevice&)));
 
     if (this->lineEditPort->text().isEmpty())
-        Connection::getInstance().connect(this->lineEditName->text());
+        Connection::getInstance().getDevice().connect(this->lineEditName->text());
     else
-        Connection::getInstance().connect(this->lineEditName->text(), this->lineEditPort->text().toInt());
+        Connection::getInstance().getDevice().connect(this->lineEditName->text(), this->lineEditPort->text().toInt());
 }
 
 void StartWidget::disconnectDevice()
 {
-    Connection::getInstance().disconnect();
+    Connection::getInstance().getDevice().disconnect();
 }
 
 void StartWidget::deviceConnectionStateChanged(CasparDevice& device)

@@ -32,15 +32,3 @@ CasparDevice& Connection::getDevice()
 {
     return *this->device;
 }
-
-void Connection::connect(const QString& name, int port)
-{
-    if (!this->device->isConnected())
-        this->device->connect(name, port);
-}
-
-void Connection::disconnect()
-{
-    if (this->device->isConnected())
-        this->device->disconnect();
-}

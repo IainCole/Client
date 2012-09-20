@@ -104,6 +104,7 @@ class CASPAR_EXPORT CasparDevice : public AMCPDevice
         Q_SIGNAL void templateChanged(const QList<CasparTemplate>&, CasparDevice&);
         Q_SIGNAL void dataChanged(const QList<CasparData>&, CasparDevice&);
         Q_SIGNAL void versionChanged(const CasparVersion&, CasparDevice&);
+        Q_SIGNAL void responseChanged(const QList<QString>&, CasparDevice&);
 
     protected:
         void sendNotification();

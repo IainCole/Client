@@ -3,6 +3,7 @@
 #include "BigFourWidget.h"
 #include "Connection.h"
 #include "Enum.h"
+#include "FrameWidget.h"
 #include "RecorderWidget.h"
 #include "StatusbarEvent.h"
 #include "SqueezeWidget.h"
@@ -25,6 +26,7 @@ MainWindow::MainWindow(QWidget* parent) : QMainWindow(parent)
     this->stackedLayout = new QStackedLayout();
     stackedLayout->addWidget(new StartWidget(this));
     stackedLayout->addWidget(new RecorderWidget(this));
+    stackedLayout->addWidget(new FrameWidget(this));
     stackedLayout->addWidget(new BigFourWidget(this));
     stackedLayout->addWidget(new SqueezeWidget(this));
     this->frameWidgets->setLayout(stackedLayout);
@@ -99,14 +101,20 @@ void MainWindow::showRecorder()
     this->stackedLayout->setCurrentIndex(1);
 }
 
+void MainWindow::showFrame()
+{
+    enableDemoButton("pushButtonFrame");
+    this->stackedLayout->setCurrentIndex(2);
+}
+
 void MainWindow::showBigFour()
 {
     enableDemoButton("pushButtonBigFour");
-    this->stackedLayout->setCurrentIndex(2);
+    this->stackedLayout->setCurrentIndex(3);
 }
 
 void MainWindow::showSqueeze()
 {
     enableDemoButton("pushButtonSqueeze");
-    this->stackedLayout->setCurrentIndex(3);
+    this->stackedLayout->setCurrentIndex(4);
 }
