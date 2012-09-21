@@ -1,8 +1,9 @@
 #pragma once
 
-#include "Global.h"
+#include "Shared.h"
 
 #include <QtCore/QObject>
+
 #include <QtNetwork/QTcpSocket>
 
 class CASPAR_EXPORT AMCPDevice : public QObject

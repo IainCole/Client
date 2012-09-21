@@ -27,5 +27,4 @@ HEADERS += \
     CasparTemplate.h \
     CasparMedia.h \
     CasparData.h \
-    Shared.h \
     Shared.h

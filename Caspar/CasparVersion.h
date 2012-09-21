@@ -1,6 +1,6 @@
 #pragma once
 
-#include "Global.h"
+#include "Shared.h"
 
 class CASPAR_EXPORT CasparVersion
 {

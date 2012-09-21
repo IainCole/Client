@@ -1,6 +1,7 @@
 #include "CasparDevice.h"
 
 #include <QtCore/QRegExp>
+#include <QtCore/QStringList>
 
 CasparDevice::CasparDevice(QObject* parent) : AMCPDevice(parent)
 {
