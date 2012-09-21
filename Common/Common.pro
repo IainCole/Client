@@ -16,5 +16,5 @@ SOURCES +=
 
 HEADERS += \
     Enum.h \
-    Shared.h \
-    Global.h
+    Global.h \
+    Shared.h
