@@ -1,7 +1,8 @@
 TEMPLATE = subdirs
 
 SUBDIRS += \
-    Common \
     Caspar \
+    Common \
+    Core \
     Shell \
     Widgets

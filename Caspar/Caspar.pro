@@ -21,10 +21,10 @@ SOURCES += \
     CasparData.cpp
 
 HEADERS += \
-    Global.h \
     CasparDevice.h \
     AMCPDevice.h \
     CasparVersion.h \
     CasparTemplate.h \
     CasparMedia.h \
-    CasparData.h
+    CasparData.h \
+    Shared.h
