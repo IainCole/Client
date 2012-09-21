@@ -4,67 +4,26 @@
 #
 #-------------------------------------------------
 
-QT += core gui
+QT += core gui sql
 
 TARGET = Demo
 TEMPLATE = app
 
-RC_FILE = Windows.rc
-
-HEADERS += \
-    MainWindow.h \
-    AboutDialog.h \
-    SqueezeWidget.h \
-    RecorderWidget.h \
-    Global.h \
-    Connection.h \
-    BigFourWidget.h \
-    StartWidget.h \
-    FrameWidget.h
+HEADERS +=
 
 SOURCES += \
-    MainWindow.cpp \
-    Main.cpp \
-    AboutDialog.cpp \
-    SqueezeWidget.cpp \
-    RecorderWidget.cpp \
-    BigFourWidget.cpp \
-    Connection.cpp \
-    StartWidget.cpp \
-    FrameWidget.cpp
+    Main.cpp
 
-FORMS += \
-    MainWindow.ui \
-    AboutDialog.ui \
-    SqueezeWidget.ui \
-    RecorderWidget.ui \
-    BigFourWidget.ui \
-    StartWidget.ui \
-    FrameWidget.ui
+FORMS +=
 
 RESOURCES += \
     Resource.qrc
 
 OTHER_FILES += \
-    Images/RadiobuttonUncheckedPressed.png \
-    Images/RadiobuttonUncheckedHover.png \
-    Images/RadiobuttonUnchecked.png \
-    Images/RadiobuttonCheckedPressed.png \
-    Images/RadiobuttonCheckedHover.png \
-    Images/RadiobuttonChecked.png \
-    Images/CheckboxUncheckedPressed.png \
-    Images/CheckboxUncheckedHover.png \
-    Images/CheckboxUnchecked.png \
-    Images/CheckboxCheckedPressed.png \
-    Images/CheckboxCheckedHover.png \
-    Images/CheckboxChecked.png \
-    Images/CasparCG.png \
-    Windows.rc \
     Images/CasparCG.ico \
-    Images/Picture.png \
-    Images/Recording.png \
-    Images/Record.png \
-    Images/Connection.png
+    Windows.rc
+
+RC_FILE = Windows.rc
 
 DEPENDPATH += $$PWD/../Caspar $$OUT_PWD/../Caspar
 INCLUDEPATH += $$PWD/../Caspar $$OUT_PWD/../Caspar
@@ -77,3 +36,15 @@ INCLUDEPATH += $$PWD/../Common $$OUT_PWD/../Common
 win32:CONFIG(release, debug|release): LIBS += -L$$OUT_PWD/../Common/release/ -lCommon
 else:win32:CONFIG(debug, debug|release): LIBS += -L$$OUT_PWD/../Common/debug/ -lCommon
 else:unix: LIBS += -L$$OUT_PWD/../Common/ -lCommon
+
+DEPENDPATH += $$PWD/../Core $$OUT_PWD/../Core
+INCLUDEPATH += $$PWD/../Core $$OUT_PWD/../Core
+win32:CONFIG(release, debug|release): LIBS += -L$$OUT_PWD/../Core/release/ -lCore
+else:win32:CONFIG(debug, debug|release): LIBS += -L$$OUT_PWD/../Core/debug/ -lCore
+else:unix: LIBS += -L$$OUT_PWD/../Core/ -lCore
+
+DEPENDPATH += $$PWD/../Widgets $$OUT_PWD/../Widgets
+INCLUDEPATH += $$PWD/../Widgets $$OUT_PWD/../Widgets
+win32:CONFIG(release, debug|release): LIBS += -L$$OUT_PWD/../Widgets/release/ -lWidgets
+else:win32:CONFIG(debug, debug|release): LIBS += -L$$OUT_PWD/../Widgets/debug/ -lWidgets
+else:unix: LIBS += -L$$OUT_PWD/../Widgets/ -lWidgets

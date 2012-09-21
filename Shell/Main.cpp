@@ -1,10 +1,14 @@
+#include "Global.h"
+
 #include "MainWindow.h"
 
 #include <QtCore/QDir>
 #include <QtCore/QFile>
 #include <QtCore/QString>
 #include <QtCore/QTextStream>
+
 #include <QtGui/QApplication>
+
 #include <QtSql/QSqlDatabase>
 
 void loadStyleSheets(QApplication& application)
