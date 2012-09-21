@@ -46,13 +46,6 @@ RESOURCES += \
     Resource.qrc
 
 OTHER_FILES += \
-    Images/ArrowUpDisabled.png \
-    Images/ArrowUp.png \
-    Images/ArrowDownDisabled.png \
-    Images/ArrowDown.png \
-    Stylesheets/Default.css \
-    Stylesheets/Extended.css \
-    Stylesheets/Windows.css \
     Images/RadiobuttonUncheckedPressed.png \
     Images/RadiobuttonUncheckedHover.png \
     Images/RadiobuttonUnchecked.png \
@@ -68,11 +61,6 @@ OTHER_FILES += \
     Images/CasparCG.png \
     Windows.rc \
     Images/CasparCG.ico \
-    Images/ArrowLeftDisabled.png \
-    Images/ArrowLeft.png \
-    Images/ArrowRightDisabled.png \
-    Images/ArrowRight.png \
-    Stylesheets/Unix.css \
     Images/Picture.png \
     Images/Recording.png \
     Images/Record.png \
