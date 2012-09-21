@@ -370,6 +370,8 @@ void CasparDevice::sendNotification()
     {
         case AMCPDevice::CLS:
         {
+            AMCPDevice::response.removeFirst(); // First post is the header, 200 CLS OK.
+
             QList<CasparMedia> items;
             foreach (QString response, AMCPDevice::response)
             {
@@ -386,6 +388,8 @@ void CasparDevice::sendNotification()
         break;
         case AMCPDevice::TLS:
         {
+            AMCPDevice::response.removeFirst(); // First post is the header, 200 TLS OK.
+
             QList<CasparTemplate> items;
             foreach (QString response, AMCPDevice::response)
             {
@@ -398,16 +402,21 @@ void CasparDevice::sendNotification()
         }
         break;
         case AMCPDevice::CINF:
+            AMCPDevice::response.removeFirst(); // First post is the header, 200 CINF OK.
             emit mediaInfoChanged(AMCPDevice::response, *this);
             break;
         case AMCPDevice::INFO:
+            AMCPDevice::response.removeFirst(); // First post is the header, 201 INFO OK.
             emit infoChanged(AMCPDevice::response, *this);
             break;
         case AMCPDevice::INFOSYSTEM:
+            AMCPDevice::response.removeFirst(); // First post is the header, 201 INFO SYSTEM OK.
             emit infoSystemChanged(AMCPDevice::response, *this);
             break;
         case AMCPDevice::DATALIST:
         {
+            AMCPDevice::response.removeFirst(); // First post is the header, 200 DATA LIST OK.
+
             QList<CasparData> items;
             foreach (QString response, AMCPDevice::response)
             {
@@ -421,6 +430,7 @@ void CasparDevice::sendNotification()
         }
         break;
         case AMCPDevice::VERSION:
+            AMCPDevice::response.removeFirst(); // First post is the header, 200 VERSION OK.
             emit versionChanged(CasparVersion(AMCPDevice::response.at(0)), *this);
             break;
         case AMCPDevice::CONNECTIONSTATE:

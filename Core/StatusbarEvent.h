@@ -8,7 +8,7 @@
 class CORE_EXPORT StatusbarEvent : public QEvent
 {
     public:
-        explicit StatusbarEvent(const QString& message, int timeout = 3000);
+        explicit StatusbarEvent(const QString& message, int timeout = 0);
 
         int getTimeout() const;
         const QString& getMessage() const;

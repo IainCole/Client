@@ -72,27 +72,6 @@ void AMCPDevice::readMessage()
     }
 }
 
-void AMCPDevice::parseLine(const QString& line)
-{
-    //qDebug() << line;
-    switch (this->state)
-    {
-        case AMCPDevice::ExpectingHeader:
-            parseHeader(line);
-            break;
-        case AMCPDevice::ExpectingSingleline:
-            parseSingleline(line);
-            this->previousLine = line;
-            break;
-        case AMCPDevice::ExpectingMultiline:
-            parseMultiline(line);
-            this->previousLine = line;
-            break;
-        default:
-            break;
-    }
-}
-
 AMCPDevice::AMCPCommand AMCPDevice::translateCommand(const QString& command)
 {
     if (command == "LOAD") return AMCPDevice::LOAD;
@@ -119,6 +98,30 @@ AMCPDevice::AMCPCommand AMCPDevice::translateCommand(const QString& command)
     return AMCPDevice::NONE;
 }
 
+void AMCPDevice::parseLine(const QString& line)
+{
+    switch (this->state)
+    {
+        case AMCPDevice::ExpectingHeader:
+            parseHeader(line);
+            break;
+        case AMCPDevice::ExpectingOneline:
+            parseOneline(line);
+            this->previousLine = line;
+            break;
+        case AMCPDevice::ExpectingTwoline:
+            parseTwoline(line);
+            this->previousLine = line;
+            break;
+        case AMCPDevice::ExpectingMultiline:
+            parseMultiline(line);
+            this->previousLine = line;
+            break;
+        default:
+            break;
+    }
+}
+
 void AMCPDevice::parseHeader(const QString& line)
 {
     if (line.length() == 0)
@@ -139,27 +142,38 @@ void AMCPDevice::parseHeader(const QString& line)
         case 200:
             this->state = AMCPDevice::ExpectingMultiline;
             break;
+        case 201:
+            this->state = AMCPDevice::ExpectingTwoline;
+            break;
         default:
-            this->state = AMCPDevice::ExpectingSingleline;
+            this->state = AMCPDevice::ExpectingOneline;
             break;
     }
+
+    this->response.append(line);
 }
 
-void AMCPDevice::parseSingleline(const QString& line)
+void AMCPDevice::parseOneline(const QString& line)
 {
     if (line.length() > 0)
-    {
-        this->response.append(line);
-    //else if (line.length() == 0 && this->previousLine.length() > 0)
+         this->response.append(line);
+    else if (line.length() == 0 && this->response.count() > 0)
         sendNotification();
-    }
+}
+
+void AMCPDevice::parseTwoline(const QString& line)
+{
+    if (line.length() > 0)
+         this->response.append(line);
+    else if (line.length() == 0 && this->response.count() > 1)
+        sendNotification();
 }
 
 void AMCPDevice::parseMultiline(const QString& line)
 {
     if (line.length() > 0)
         this->response.append(line);
-    else if (line.length() == 0 && this->previousLine.length() == 0 && this->response.count() > 1)
+    else if (line.length() == 0 && this->line.length() == 0 && this->previousLine.length() == 0)
         sendNotification();
 }
 

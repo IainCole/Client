@@ -60,7 +60,8 @@ class CASPAR_EXPORT AMCPDevice : public QObject
         enum AMCPParserState
         {
             ExpectingHeader,
-            ExpectingSingleline,
+            ExpectingOneline,
+            ExpectingTwoline,
             ExpectingMultiline
         };
 
@@ -72,7 +73,8 @@ class CASPAR_EXPORT AMCPDevice : public QObject
 
         void parseLine(const QString& line);
         void parseHeader(const QString& line);
-        void parseSingleline(const QString& line);
+        void parseOneline(const QString& line);
+        void parseTwoline(const QString& line);
         void parseMultiline(const QString& line);
 
         AMCPCommand translateCommand(const QString& command);
