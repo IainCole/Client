@@ -1,12 +1,12 @@
 #pragma once
 
-#include "Global.h"
+#include "Shared.h"
 
 #include "AMCPDevice.h"
+#include "CasparData.h"
 #include "CasparMedia.h"
 #include "CasparTemplate.h"
 #include "CasparVersion.h"
-#include "CasparData.h"
 
 class CASPAR_EXPORT CasparDevice : public AMCPDevice
 {

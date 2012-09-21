@@ -1,6 +1,8 @@
 #include "AMCPDevice.h"
 
 #include <QtCore/QRegExp>
+#include <QtCore/QStringList>
+
 #include <QtNetwork/QAbstractSocket>
 
 AMCPDevice::AMCPDevice(QObject* parent) : QObject(parent),

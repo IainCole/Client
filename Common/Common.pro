@@ -12,10 +12,9 @@ TEMPLATE = lib
 
 DEFINES += COMMON_LIBRARY
 
-SOURCES += \
-    StatusbarEvent.cpp
+SOURCES +=
 
 HEADERS += \
-    Global.h \
-    StatusbarEvent.h \
-    Enum.h
+    Enum.h \
+    Shared.h \
+    Global.h

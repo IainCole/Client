@@ -1,6 +1,7 @@
 #include "MainWindow.h"
 
 #include "Enum.h"
+#include "Global.h"
 
 #include "Connection.h"
 

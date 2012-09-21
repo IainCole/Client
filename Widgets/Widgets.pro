@@ -17,7 +17,6 @@ HEADERS += \
     SqueezeWidget.h \
     RecorderWidget.h \
     Shared.h \
-    Connection.h \
     BigFourWidget.h \
     StartWidget.h \
     FrameWidget.h
@@ -28,7 +27,6 @@ SOURCES += \
     SqueezeWidget.cpp \
     RecorderWidget.cpp \
     BigFourWidget.cpp \
-    Connection.cpp \
     StartWidget.cpp \
     FrameWidget.cpp
 
