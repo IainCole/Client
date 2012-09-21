@@ -72,6 +72,7 @@ void AMCPDevice::readMessage()
 
 void AMCPDevice::parseLine(const QString& line)
 {
+    //qDebug() << line;
     switch (this->state)
     {
         case AMCPDevice::ExpectingHeader:
@@ -118,6 +119,9 @@ AMCPDevice::AMCPCommand AMCPDevice::translateCommand(const QString& command)
 
 void AMCPDevice::parseHeader(const QString& line)
 {
+    if (line.length() == 0)
+        return;
+
     QStringList tokens = line.split(QRegExp("\\s"));
 
     this->code = tokens.at(0).toInt();
@@ -142,9 +146,11 @@ void AMCPDevice::parseHeader(const QString& line)
 void AMCPDevice::parseSingleline(const QString& line)
 {
     if (line.length() > 0)
+    {
         this->response.append(line);
-    else if (line.length() == 0 && this->previousLine.length() > 0)
+    //else if (line.length() == 0 && this->previousLine.length() > 0)
         sendNotification();
+    }
 }
 
 void AMCPDevice::parseMultiline(const QString& line)
