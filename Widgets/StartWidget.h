@@ -1,7 +1,6 @@
 #pragma once
 
-#include "Global.h"
-
+#include "Shared.h"
 #include "ui_StartWidget.h"
 
 #include "CasparDevice.h"
@@ -10,7 +9,7 @@
 #include <QtCore/QEvent>
 #include <QtGui/QWidget>
 
-class StartWidget : public QWidget, Ui::StartWidget
+class WIDGETS_EXPORT StartWidget : public QWidget, Ui::StartWidget
 {
     Q_OBJECT
 

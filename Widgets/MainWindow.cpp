@@ -1,8 +1,13 @@
 #include "MainWindow.h"
+
+#include "Enum.h"
+
+#include "Connection.h"
+
 #include "AboutDialog.h"
 #include "BigFourWidget.h"
-#include "Connection.h"
-#include "Enum.h"
+
+
 #include "FrameWidget.h"
 #include "RecorderWidget.h"
 #include "StatusbarEvent.h"

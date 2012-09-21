@@ -1,6 +1,8 @@
 #include "StartWidget.h"
-#include "Connection.h"
+
 #include "Enum.h"
+
+#include "Connection.h"
 #include "StatusbarEvent.h"
 
 StartWidget::StartWidget(QWidget* parent) : QWidget(parent)

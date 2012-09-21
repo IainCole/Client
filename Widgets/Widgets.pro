@@ -24,7 +24,6 @@ HEADERS += \
 
 SOURCES += \
     MainWindow.cpp \
-    Main.cpp \
     AboutDialog.cpp \
     SqueezeWidget.cpp \
     RecorderWidget.cpp \
@@ -52,7 +51,7 @@ OTHER_FILES += \
     Images/ArrowDown.png \
     Stylesheets/Default.css \
     Stylesheets/Extended.css \
-	Stylesheets/Unix.css \
+    Stylesheets/Unix.css \
     Stylesheets/Windows.css \
     Images/RadiobuttonUncheckedPressed.png \
     Images/RadiobuttonUncheckedHover.png \
@@ -87,3 +86,9 @@ INCLUDEPATH += $$PWD/../Common $$OUT_PWD/../Common
 win32:CONFIG(release, debug|release): LIBS += -L$$OUT_PWD/../Common/release/ -lCommon
 else:win32:CONFIG(debug, debug|release): LIBS += -L$$OUT_PWD/../Common/debug/ -lCommon
 else:unix: LIBS += -L$$OUT_PWD/../Common/ -lCommon
+
+DEPENDPATH += $$PWD/../Core $$OUT_PWD/../Core
+INCLUDEPATH += $$PWD/../Core $$OUT_PWD/../Core
+win32:CONFIG(release, debug|release): LIBS += -L$$OUT_PWD/../Core/release/ -lCore
+else:win32:CONFIG(debug, debug|release): LIBS += -L$$OUT_PWD/../Core/debug/ -lCore
+else:unix: LIBS += -L$$OUT_PWD/../Core/ -lCore
