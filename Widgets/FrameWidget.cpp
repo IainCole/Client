@@ -1,4 +1,5 @@
 #include "FrameWidget.h"
+
 #include "Connection.h"
 
 #include <QtCore/QRegExp>

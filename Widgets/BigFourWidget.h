@@ -1,13 +1,13 @@
 #pragma once
 
-#include "Global.h"
-
+#include "Shared.h"
 #include "ui_BigFourWidget.h"
 
 #include <QtCore/QEvent>
+
 #include <QtGui/QWidget>
 
-class BigFourWidget : public QWidget, Ui::BigFourWidget
+class WIDGETS_EXPORT BigFourWidget : public QWidget, Ui::BigFourWidget
 {
     Q_OBJECT
 

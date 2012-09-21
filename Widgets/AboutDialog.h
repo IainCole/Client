@@ -1,13 +1,12 @@
 #pragma once
 
-#include "Global.h"
-
+#include "Shared.h"
 #include "ui_AboutDialog.h"
 
 #include <QtGui/QDialog>
 #include <QtGui/QWidget>
 
-class AboutDialog : public QDialog, Ui::AboutDialog
+class WIDGETS_EXPORT AboutDialog : public QDialog, Ui::AboutDialog
 {
     Q_OBJECT
 

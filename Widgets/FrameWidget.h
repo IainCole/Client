@@ -1,7 +1,6 @@
 #pragma once
 
-#include "Global.h"
-
+#include "Shared.h"
 #include "ui_FrameWidget.h"
 
 #include "CasparDevice.h"
@@ -9,7 +8,7 @@
 #include <QtCore/QEvent>
 #include <QtGui/QWidget>
 
-class FrameWidget : public QWidget, Ui::FrameWidget
+class WIDGETS_EXPORT FrameWidget : public QWidget, Ui::FrameWidget
 {
     Q_OBJECT
 

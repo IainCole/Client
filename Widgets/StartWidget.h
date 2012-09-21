@@ -7,6 +7,7 @@
 #include "CasparVersion.h"
 
 #include <QtCore/QEvent>
+
 #include <QtGui/QWidget>
 
 class WIDGETS_EXPORT StartWidget : public QWidget, Ui::StartWidget

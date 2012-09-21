@@ -1,4 +1,5 @@
 #include "RecorderWidget.h"
+
 #include "Connection.h"
 
 RecorderWidget::RecorderWidget(QWidget* parent) : QWidget(parent)

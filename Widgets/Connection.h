@@ -1,6 +1,6 @@
 #pragma once
 
-#include "Global.h"
+#include "Shared.h"
 
 #include "CasparDevice.h"
 

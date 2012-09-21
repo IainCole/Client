@@ -6,8 +6,6 @@
 
 #include "AboutDialog.h"
 #include "BigFourWidget.h"
-
-
 #include "FrameWidget.h"
 #include "RecorderWidget.h"
 #include "StatusbarEvent.h"

@@ -1,14 +1,14 @@
 #pragma once
 
-#include "Global.h"
-
+#include "Shared.h"
 #include "ui_RecorderWidget.h"
 
 #include <QtCore/QTime>
 #include <QtCore/QTimer>
+
 #include <QtGui/QWidget>
 
-class RecorderWidget : public QWidget, Ui::RecorderWidget
+class WIDGETS_EXPORT RecorderWidget : public QWidget, Ui::RecorderWidget
 {
     Q_OBJECT
 

@@ -1,17 +1,17 @@
 #pragma once
 
-#include "Global.h"
-
+#include "Shared.h"
 #include "ui_MainWindow.h"
 
 #include "CasparDevice.h"
 
 #include <QtCore/QEvent>
+
 #include <QtGui/QMainWindow>
 #include <QtGui/QStackedLayout>
 #include <QtGui/QWidget>
 
-class MainWindow : public QMainWindow, Ui::MainWindow
+class WIDGETS_EXPORT MainWindow : public QMainWindow, Ui::MainWindow
 {
     Q_OBJECT
 
