@@ -5,6 +5,7 @@
         <file>RecorderWidget.ui</file>
         <file>SqueezeWidget.ui</file>
         <file>AboutDialog.ui</file>
+        <file>FrameWidget.ui</file>
     </qresource>
     <qresource prefix="/Graphics">
         <file>Images/ArrowDown.png</file>
