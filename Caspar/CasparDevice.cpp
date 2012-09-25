@@ -370,6 +370,11 @@ void CasparDevice::sendNotification()
     {
         case AMCPDevice::CLS:
         {
+            QList<QString> response;
+            response.push_back(AMCPDevice::response.at(0));
+
+            emit responseChanged(response, *this);
+
             AMCPDevice::response.removeFirst(); // First post is the header, 200 CLS OK.
 
             QList<CasparMedia> items;
@@ -388,6 +393,11 @@ void CasparDevice::sendNotification()
         break;
         case AMCPDevice::TLS:
         {
+            QList<QString> response;
+            response.push_back(AMCPDevice::response.at(0));
+
+            emit responseChanged(response, *this);
+
             AMCPDevice::response.removeFirst(); // First post is the header, 200 TLS OK.
 
             QList<CasparTemplate> items;
@@ -415,6 +425,11 @@ void CasparDevice::sendNotification()
             break;
         case AMCPDevice::DATALIST:
         {
+            QList<QString> response;
+            response.push_back(AMCPDevice::response.at(0));
+
+            emit responseChanged(response, *this);
+
             AMCPDevice::response.removeFirst(); // First post is the header, 200 DATA LIST OK.
 
             QList<CasparData> items;
