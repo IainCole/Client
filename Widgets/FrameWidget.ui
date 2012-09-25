@@ -95,9 +95,7 @@
           <bool>true</bool>
          </property>
          <property name="plainText">
-          <string>CLS
-
-// Make sure no graphics are displayed.
+          <string>// Make sure no graphics are displayed.
 CLEAR 1
 
 // Mute the volume.
