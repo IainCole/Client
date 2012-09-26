@@ -1,6 +1,6 @@
 #include "FrameWidget.h"
 
-#include "Connection.h"
+#include "DeviceManager.h"
 
 #include <QtCore/QRegExp>
 
@@ -8,7 +8,7 @@ FrameWidget::FrameWidget(QWidget* parent) : QWidget(parent)
 {
     setupUi(this);
 
-    QObject::connect(&Connection::getInstance().getDevice(), SIGNAL(responseChanged(const QList<QString>&, CasparDevice&)), this, SLOT(responseChanged(const QList<QString>&, CasparDevice&)));
+    QObject::connect(&DeviceManager::getInstance().getDevice(), SIGNAL(responseChanged(const QList<QString>&, CasparDevice&)), this, SLOT(responseChanged(const QList<QString>&, CasparDevice&)));
 
     qApp->installEventFilter(this);
 }
@@ -33,13 +33,13 @@ void FrameWidget::startDemo()
         if (command.isEmpty() || command.startsWith("//"))
             continue;
 
-        Connection::getInstance().getDevice().sendCommand(command);
+        DeviceManager::getInstance().getDevice().sendCommand(command);
     }
 }
 
 void FrameWidget::stopDemo()
 {
-    Connection::getInstance().getDevice().clearChannel(1);
+    DeviceManager::getInstance().getDevice().clearChannel(1);
 }
 
 void FrameWidget::responseChanged(const QList<QString>& response, CasparDevice& device)

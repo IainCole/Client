@@ -2,7 +2,7 @@
 
 #include "Enum.h"
 
-#include "Connection.h"
+#include "DeviceManager.h"
 #include "StatusbarEvent.h"
 
 StartWidget::StartWidget(QWidget* parent) : QWidget(parent)
@@ -14,8 +14,8 @@ StartWidget::StartWidget(QWidget* parent) : QWidget(parent)
 
 StartWidget::~StartWidget()
 {
-    if (Connection::getInstance().getDevice().isConnected())
-        Connection::getInstance().getDevice().disconnect();
+    if (DeviceManager::getInstance().getDevice().isConnected())
+        DeviceManager::getInstance().getDevice().disconnect();
 }
 
 bool StartWidget::eventFilter(QObject* target, QEvent* event)
@@ -31,18 +31,18 @@ bool StartWidget::eventFilter(QObject* target, QEvent* event)
 
 void StartWidget::connectDevice()
 {
-    QObject::connect(&Connection::getInstance().getDevice(), SIGNAL(connectionStateChanged(CasparDevice&)), this, SLOT(deviceConnectionStateChanged(CasparDevice&)));
-    QObject::connect(&Connection::getInstance().getDevice(), SIGNAL(versionChanged(const CasparVersion&, CasparDevice&)), this, SLOT(deviceVersionChanged(const CasparVersion&, CasparDevice&)));
+    QObject::connect(&DeviceManager::getInstance().getDevice(), SIGNAL(connectionStateChanged(CasparDevice&)), this, SLOT(deviceConnectionStateChanged(CasparDevice&)));
+    QObject::connect(&DeviceManager::getInstance().getDevice(), SIGNAL(versionChanged(const CasparVersion&, CasparDevice&)), this, SLOT(deviceVersionChanged(const CasparVersion&, CasparDevice&)));
 
     if (this->lineEditPort->text().isEmpty())
-        Connection::getInstance().getDevice().connect(this->lineEditName->text());
+        DeviceManager::getInstance().getDevice().connect(this->lineEditName->text());
     else
-        Connection::getInstance().getDevice().connect(this->lineEditName->text(), this->lineEditPort->text().toInt());
+        DeviceManager::getInstance().getDevice().connect(this->lineEditName->text(), this->lineEditPort->text().toInt());
 }
 
 void StartWidget::disconnectDevice()
 {
-    Connection::getInstance().getDevice().disconnect();
+    DeviceManager::getInstance().getDevice().disconnect();
 }
 
 void StartWidget::deviceConnectionStateChanged(CasparDevice& device)

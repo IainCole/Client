@@ -3,7 +3,7 @@
 #include "Enum.h"
 #include "Global.h"
 
-#include "Connection.h"
+#include "DeviceManager.h"
 
 #include "AboutDialog.h"
 #include "BigFourWidget.h"
@@ -37,7 +37,7 @@ MainWindow::MainWindow(QWidget* parent) : QMainWindow(parent)
 
     qApp->installEventFilter(this);
 
-    QObject::connect(&Connection::getInstance().getDevice(), SIGNAL(connectionStateChanged(CasparDevice&)), this, SLOT(deviceConnectionStateChanged(CasparDevice&)));
+    QObject::connect(&DeviceManager::getInstance().getDevice(), SIGNAL(connectionStateChanged(CasparDevice&)), this, SLOT(deviceConnectionStateChanged(CasparDevice&)));
 }
 
 void MainWindow::setupUiMenu()

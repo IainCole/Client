@@ -4,13 +4,13 @@
 
 #include "CasparDevice.h"
 
-class CORE_EXPORT Connection
+class CORE_EXPORT DeviceManager
 {
     public:
-        explicit Connection();
-        ~Connection();
+        explicit DeviceManager();
+        ~DeviceManager();
 
-        static Connection& getInstance();
+        static DeviceManager& getInstance();
 
         CasparDevice& getDevice();
 

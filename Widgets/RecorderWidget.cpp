@@ -1,6 +1,6 @@
 #include "RecorderWidget.h"
 
-#include "Connection.h"
+#include "DeviceManager.h"
 
 RecorderWidget::RecorderWidget(QWidget* parent) : QWidget(parent)
 {
@@ -71,9 +71,9 @@ void RecorderWidget::buttonPressed()
             codec = "libx264";
 
         if (this->lineEditFilename->text().isEmpty())
-            Connection::getInstance().getDevice().startRecording(1, this->lineEditFilename->placeholderText(), QString("-vcodec %1").arg(codec));
+            DeviceManager::getInstance().getDevice().startRecording(1, this->lineEditFilename->placeholderText(), QString("-vcodec %1").arg(codec));
         else
-            Connection::getInstance().getDevice().startRecording(1, this->lineEditFilename->text(), QString("-vcodec %1").arg(codec));
+            DeviceManager::getInstance().getDevice().startRecording(1, this->lineEditFilename->text(), QString("-vcodec %1").arg(codec));
 
         this->pushButton->setIcon(QIcon(":/Graphics/Images/Recording.png"));
 
@@ -83,7 +83,7 @@ void RecorderWidget::buttonPressed()
     }
     else
     {
-        Connection::getInstance().getDevice().stopRecording(1);
+        DeviceManager::getInstance().getDevice().stopRecording(1);
 
         this->pushButton->setIcon(QIcon(":/Graphics/Images/Record.png"));
 

@@ -1,4 +1,4 @@
-#include "Connection.h"
+#include "DeviceManager.h"
 
 #include "CasparDevice.h"
 
@@ -6,14 +6,14 @@
 #include <QtCore/QStringList>
 #include <QtCore/QTimer>
 
-Q_GLOBAL_STATIC(Connection, connection)
+Q_GLOBAL_STATIC(DeviceManager, deviceManager)
 
-Connection::Connection()
+DeviceManager::DeviceManager()
 {
     this->device = new CasparDevice();
 }
 
-Connection::~Connection()
+DeviceManager::~DeviceManager()
 {
     if (this->device->isConnected())
         this->device->disconnect();
@@ -21,12 +21,12 @@ Connection::~Connection()
     delete this->device;
 }
 
-Connection& Connection::getInstance()
+DeviceManager& DeviceManager::getInstance()
 {
-    return *connection();
+    return *deviceManager();
 }
 
-CasparDevice& Connection::getDevice()
+CasparDevice& DeviceManager::getDevice()
 {
     return *this->device;
 }

@@ -12,13 +12,13 @@ TEMPLATE = lib
 DEFINES += CORE_LIBRARY
 
 HEADERS += \
-    Connection.h \
     StatusbarEvent.h \
-    Shared.h
+    Shared.h \
+    DeviceManager.h
 
 SOURCES += \
-    Connection.cpp \
-    StatusbarEvent.cpp
+    StatusbarEvent.cpp \
+    DeviceManager.cpp
 
 DEPENDPATH += $$PWD/../Caspar $$OUT_PWD/../Caspar
 INCLUDEPATH += $$PWD/../Caspar $$OUT_PWD/../Caspar
