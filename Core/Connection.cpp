@@ -6,8 +6,6 @@
 #include <QtCore/QStringList>
 #include <QtCore/QTimer>
 
-#include <QtGui/QApplication>
-
 Q_GLOBAL_STATIC(Connection, connection)
 
 Connection::Connection()
