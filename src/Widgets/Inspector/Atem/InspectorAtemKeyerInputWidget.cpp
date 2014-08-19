@@ -18,6 +18,7 @@ InspectorAtemKeyerInputWidget::InspectorAtemKeyerInputWidget(QWidget* parent)
     setupUi(this);
 
     QObject::connect(&EventManager::getInstance(), SIGNAL(rundownItemSelected(const RundownItemSelectedEvent&)), this, SLOT(rundownItemSelected(const RundownItemSelectedEvent&)));
+    QObject::connect(&EventManager::getInstance(), SIGNAL(atemDeviceChanged(const AtemDeviceChangedEvent&)), this, SLOT(atemDeviceChanged(const AtemDeviceChangedEvent&)));
 
     loadAtemKeyer();
 }
@@ -37,6 +38,7 @@ void InspectorAtemKeyerInputWidget::rundownItemSelected(const RundownItemSelecte
         if (device != NULL)
             loadAtemInput(device->inputInfos());
 
+        this->comboBoxInput->setCurrentIndex(this->comboBoxInput->findData(this->command->getInput()));
         this->comboBoxKeyer->setCurrentIndex(this->comboBoxKeyer->findData(this->command->getKeyer()));
         this->checkBoxTriggerOnNext->setChecked(this->command->getTriggerOnNext());
     }
@@ -62,6 +64,19 @@ void InspectorAtemKeyerInputWidget::loadAtemKeyer()
         this->comboBoxKeyer->addItem(model.getName(), model.getValue());
 
     this->comboBoxKeyer->blockSignals(false);
+}
+
+void InspectorAtemKeyerInputWidget::atemDeviceChanged(const AtemDeviceChangedEvent& event)
+{
+    if (this->model != NULL)
+    {
+        // Should we update the device name?
+        if (!event.getDeviceName().isEmpty() && event.getDeviceName() != this->model->getDeviceName())
+        {
+            const QSharedPointer<AtemDevice> device = AtemDeviceManager::getInstance().getDeviceByName(event.getDeviceName());
+            loadAtemInput(device->inputInfos());
+        }
+    }
 }
 
 void InspectorAtemKeyerInputWidget::loadAtemInput(QMap<quint16, QAtemConnection::InputInfo> inputs)

@@ -182,8 +182,8 @@
 			</hints>
 		</connection>
 		<connection>
-			<sender>checkBoxState</sender>
-			<signal>inputChanged(int)</signal>
+                        <sender>comboBoxInput</sender>
+                        <signal>currentIndexChanged(int)</signal>
 			<receiver>InspectorAtemKeyerInputWidget</receiver>
 			<slot>inputChanged(int)</slot>
 			<hints>

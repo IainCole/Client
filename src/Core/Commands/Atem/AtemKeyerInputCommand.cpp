@@ -46,7 +46,7 @@ void AtemKeyerInputCommand::readProperties(boost::property_tree::wptree& pt)
     AbstractCommand::readProperties(pt);
 
     setKeyer(QString::fromStdWString(pt.get(L"keyer", Atem::DEFAULT_KEYER.toStdWString())));
-    setInput(pt.get(L"input", Atem::DEFAULT_KEYER_INPUT));
+    setInput(QString::fromStdWString(pt.get(L"input", Atem::DEFAULT_KEYER_INPUT.toStdWString())));
     setTriggerOnNext(pt.get(L"triggeronnext", Atem::DEFAULT_TRIGGER_ON_NEXT));
 }
 

@@ -37,6 +37,7 @@
 #include "Commands/Atem/AtemCutCommand.h"
 #include "Commands/Atem/AtemAutoCommand.h"
 #include "Commands/Atem/AtemKeyerStateCommand.h"
+#include "Commands/Atem/AtemKeyerInputCommand.h"
 #include "Commands/Atem/AtemVideoFormatCommand.h"
 #include "Commands/Atem/AtemAudioInputBalanceCommand.h"
 #include "Commands/Atem/AtemAudioGainCommand.h"
@@ -306,6 +307,7 @@ void InspectorOutputWidget::rundownItemSelected(const RundownItemSelectedEvent& 
                  dynamic_cast<AtemCutCommand*>(event.getCommand()) ||
                  dynamic_cast<AtemAutoCommand*>(event.getCommand()) ||
                  dynamic_cast<AtemKeyerStateCommand*>(event.getCommand()) ||
+                 dynamic_cast<AtemKeyerInputCommand*>(event.getCommand()) ||
                  dynamic_cast<AtemVideoFormatCommand*>(event.getCommand()) ||
                  dynamic_cast<AtemAudioInputStateCommand*>(event.getCommand()) ||
                  dynamic_cast<AtemAudioGainCommand*>(event.getCommand()) ||

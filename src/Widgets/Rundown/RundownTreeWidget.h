@@ -155,6 +155,7 @@ class WIDGETS_EXPORT RundownTreeWidget : public QWidget, Ui::RundownTreeWidget
         Q_SLOT void addAtemTriggerCutItem();
         Q_SLOT void addAtemSelectInputItem();
         Q_SLOT void addAtemKeyerStateItem();
+        Q_SLOT void addAtemKeyerInputItem();
         Q_SLOT void addAtemVideoFormatItem();
         Q_SLOT void addAtemAudioInputStateItem();
         Q_SLOT void addAtemAudioInputGainItem();

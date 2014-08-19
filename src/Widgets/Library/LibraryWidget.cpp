@@ -468,6 +468,15 @@ void LibraryWidget::setupTools()
     widgetAtemKeyerState->setText(4, Rundown::ATEMKEYERSTATE);
     widgetAtemKeyerState->setText(5, "0");
 
+    QTreeWidgetItem* widgetAtemKeyerInput = new QTreeWidgetItem(this->treeWidgetTool->topLevelItem(4));
+    widgetAtemKeyerInput->setIcon(0, QIcon(":/Graphics/Images/Atem/KeyerStateSmall.png"));
+    widgetAtemKeyerInput->setText(0, "Set Keyer Input");
+    widgetAtemKeyerInput->setText(1, "0");
+    widgetAtemKeyerInput->setText(2, "Set Keyer Input");
+    widgetAtemKeyerInput->setText(3, "");
+    widgetAtemKeyerInput->setText(4, Rundown::ATEMKEYERINPUT);
+    widgetAtemKeyerInput->setText(5, "0");
+
     QTreeWidgetItem* widgetAtemVideoFormat = new QTreeWidgetItem(this->treeWidgetTool->topLevelItem(4));
     widgetAtemVideoFormat->setIcon(0, QIcon(":/Graphics/Images/Atem/VideoFormatSmall.png"));
     widgetAtemVideoFormat->setText(0, "Set Video Format");

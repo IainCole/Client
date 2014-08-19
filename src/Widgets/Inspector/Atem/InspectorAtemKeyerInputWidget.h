@@ -6,6 +6,7 @@
 #include "AtemDevice.h"
 
 #include "Commands/Atem/AtemKeyerInputCommand.h"
+#include "Events/Atem/AtemDeviceChangedEvent.h"
 #include "Events/Rundown/RundownItemSelectedEvent.h"
 #include "Models/LibraryModel.h"
 
@@ -33,4 +34,5 @@ class WIDGETS_EXPORT InspectorAtemKeyerInputWidget : public QWidget, Ui::Inspect
         Q_SLOT void inputChanged(int);
         Q_SLOT void triggerOnNextChanged(int);
         Q_SLOT void rundownItemSelected(const RundownItemSelectedEvent&);
+        Q_SLOT void atemDeviceChanged(const AtemDeviceChangedEvent&);
 };

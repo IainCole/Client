@@ -161,6 +161,7 @@ void RundownTreeWidget::setupMenus()
     this->contextMenuAtem->addAction(QIcon(":/Graphics/Images/Atem/AudioInputStateSmall.png"), "Set Audio Input State", this, SLOT(addAtemAudioInputStateItem()));
     this->contextMenuAtem->addAction(QIcon(":/Graphics/Images/Atem/AudioInputBalanceSmall.png"), "Set Audio Input Balance", this, SLOT(addAtemAudioInputBalanceItem()));
     this->contextMenuAtem->addAction(QIcon(":/Graphics/Images/Atem/KeyerStateSmall.png"), "Set Keyer State", this, SLOT(addAtemKeyerStateItem()));
+    this->contextMenuAtem->addAction(QIcon(":/Graphics/Images/Atem/KeyerStateSmall.png"), "Set Keyer Input", this, SLOT(addAtemKeyerInputItem()));
     this->contextMenuAtem->addAction(QIcon(":/Graphics/Images/Atem/VideoFormatSmall.png"), "Set Video Format", this, SLOT(addAtemVideoFormatItem()));
     this->contextMenuAtem->addAction(QIcon(":/Graphics/Images/Atem/TriggerAutoSmall.png"), "Trigger Auto", this, SLOT(addAtemTriggerAutoItem()));
     this->contextMenuAtem->addAction(QIcon(":/Graphics/Images/Atem/TriggerCutSmall.png"), "Trigger Cut", this, SLOT(addAtemTriggerCutItem()));
@@ -1418,6 +1419,11 @@ void RundownTreeWidget::addVideoItem()
 void RundownTreeWidget::addAtemKeyerStateItem()
 {
     EventManager::getInstance().fireAddRudnownItemEvent(Rundown::ATEMKEYERSTATE);
+}
+
+void RundownTreeWidget::addAtemKeyerInputItem()
+{
+    EventManager::getInstance().fireAddRudnownItemEvent(Rundown::ATEMKEYERINPUT);
 }
 
 void RundownTreeWidget::addAtemSelectInputItem()
