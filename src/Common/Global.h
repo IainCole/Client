@@ -17,6 +17,7 @@ namespace Atem
     static const bool DEFAULT_TRIGGER_ON_NEXT = false;
     static const QString DEFAULT_KEYER = "0";
     static const bool DEFAULT_KEYER_STATE = false;
+    static const QString DEFAULT_KEYER_INPUT = "1";
     static const QString DEFAULT_VIDEO_FORMAT = "4";
     static const QString DEFAULT_AUDIO_INPUT = "1";
     static const QString DEFAULT_AUDIO_INPUT_STATE = "0";
@@ -355,6 +356,7 @@ namespace Rundown
     static const QString ATEMAUTO = "ATEMAUTO";
     static const QString ATEMINPUT = "ATEMINPUT";
     static const QString ATEMKEYERSTATE = "ATEMKEYERSTATE";
+    static const QString ATEMKEYERINPUT = "ATEMKEYERINPUT";
     static const QString ATEMCUT = "ATEMCUT";
     static const QString ATEMVIDEOFORMAT = "ATEMVIDEOFORMAT";
     static const QString ATEMAUDIOINPUTSTATE = "ATEMAUDIOINPUTSTATE";

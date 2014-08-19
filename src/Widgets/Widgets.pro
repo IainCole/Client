@@ -138,7 +138,9 @@ HEADERS += \
     Inspector/InspectorPlayoutCommandWidget.h \
     LiveDialog.h \
     Rundown/RundownFadeToBlackWidget.h \
-    Inspector/InspectorFadeToBlackWidget.h
+    Inspector/InspectorFadeToBlackWidget.h \
+    Rundown/Atem/RundownAtemKeyerInputWidget.h \
+    Inspector/Atem/InspectorAtemKeyerInputWidget.h
 
 SOURCES += \
     SettingsDialog.cpp \
@@ -265,7 +267,9 @@ SOURCES += \
     Inspector/InspectorPlayoutCommandWidget.cpp \
     LiveDialog.cpp \
     Rundown/RundownFadeToBlackWidget.cpp \
-    Inspector/InspectorFadeToBlackWidget.cpp
+    Inspector/InspectorFadeToBlackWidget.cpp \
+    Rundown/Atem/RundownAtemKeyerInputWidget.cpp \
+    Inspector/Atem/InspectorAtemKeyerInputWidget.cpp
 
 FORMS += \
     SettingsDialog.ui \
@@ -381,7 +385,9 @@ FORMS += \
     Inspector/InspectorPlayoutCommandWidget.ui \
     LiveDialog.ui \
     Rundown/RundownFadeToBlackWidget.ui \
-    Inspector/InspectorFadeToBlackWidget.ui
+    Inspector/InspectorFadeToBlackWidget.ui \
+    Rundown/Atem/RundownAtemKeyerInputWidget.ui \
+    Inspector/Atem/InspectorAtemKeyerInputWidget.ui
 
 RESOURCES += \
     Widgets.qrc \

@@ -2,7 +2,7 @@
 
 #include "Global.h"
 
-#include "EventManager.h"
+#include "../EventManager.h"
 
 AudioCommand::AudioCommand(QObject* parent)
     : AbstractCommand(parent),

@@ -69,6 +69,14 @@ void AtemDevice::setKeyerState(const QString& keyer, bool state)
         SwitcherDevice::atemConnection->setUpstreamKeyOn(keyer.toInt() - 2, state);
 }
 
+void AtemDevice::setKeyerInput(const QString& keyer, const QString& input)
+{
+    if (keyer == "0" || keyer == "1") // Downstream keyer.
+        SwitcherDevice::atemConnection->setDownstreamKeyFillSource(keyer.toInt(), input.toInt());
+    else
+        SwitcherDevice::atemConnection->setUpstreamKeyFillSource(keyer.toInt() - 2, input.toInt());
+}
+
 void AtemDevice::setAudioInputState(const QString& input, const QString& state)
 {
     SwitcherDevice::atemConnection->setAudioInputState(input.toInt(), state.toInt());

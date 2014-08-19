@@ -2,7 +2,7 @@
 
 #include "../Shared.h"
 #include "AbstractCommand.h"
-#include "Models/TemplateDataModel.h"
+#include "../Models/TemplateDataModel.h"
 
 #include <boost/foreach.hpp>
 #include <boost/property_tree/ptree.hpp>
